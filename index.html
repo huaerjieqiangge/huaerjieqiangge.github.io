@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>开户指南 · 券商 & 香港银行卡</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', 'PingFang SC', 'Helvetica Neue', sans-serif; }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .badge-pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+    .poster-placeholder {
+      background: repeating-linear-gradient(45deg,#f3f4f6,#f3f4f6 10px,#e5e7eb 10px,#e5e7eb 20px);
+    }
+    #detail-view { display: none; }
+    .page-enter { animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .copied { background-color: #22c55e !important; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- ===== HEADER ===== -->
+<header class="bg-white border-b border-gray-100 sticky top-0 z-20 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <button onclick="showList()" class="flex items-center gap-2 hover:opacity-70 transition-opacity">
+      <span class="text-2xl">📈</span>
+      <span class="font-bold text-gray-900 text-lg">开户指南</span>
+    </button>
+    <div class="inline-flex items-center gap-1.5 bg-yellow-400 text-yellow-900 text-xs font-semibold px-3 py-1 rounded-full badge-pulse">
+      🎁 2026年4月活动进行中
+    </div>
+  </div>
+</header>
+
+<!-- ===== 重要通知 ===== -->
+<div class="bg-amber-50 border-b border-amber-200">
+  <div class="max-w-6xl mx-auto px-4 py-3 text-center text-sm text-amber-800 font-medium">
+    ⚠️ 重要通知：富途、老虎、华盛通正在清理未入金账户！已开户未入金请尽快入金激活（入金 1 万 HKD，存放几天即可）
+  </div>
+</div>
+
+<!-- ===== LIST VIEW ===== -->
+<div id="list-view">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-700 to-slate-900 text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">券商开户 · 香港银行卡</h1>
+      <p class="text-slate-300 text-base mb-6">内地身份 / 海外身份均可开 · 附最新奖励活动</p>
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
+        <a href="#mainland" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">内地身份券商</a>
+        <a href="#overseas" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">海外身份券商</a>
+        <a href="#bank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">香港银行卡</a>
+      </div>
+    </div>
+  </section>
+
+<div class="max-w-6xl mx-auto px-4 py-12 space-y-16">
+
+    <!-- 内地身份 -->
+    <section id="mainland">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-red-100 text-red-600 text-sm font-bold px-3 py-1 rounded-full">🪪 内地身份可开</span>
+        <span class="text-gray-400 text-sm">使用大陆居民身份证即可开户</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-mainland"></div>
+    </section>
+
+    <!-- 海外身份 -->
+    <section id="overseas">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-blue-100 text-blue-600 text-sm font-bold px-3 py-1 rounded-full">🌏 海外身份可开</span>
+        <span class="text-gray-400 text-sm">需香港 / 新加坡等境外证件</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-overseas"></div>
+    </section>
+
+    <!-- 香港银行卡 -->
+    <section id="bank">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="bg-slate-100 text-slate-600 text-sm font-bold px-3 py-1 rounded-full">🏦 香港银行卡</span>
+      </div>
+      <p class="text-sm text-gray-400 mb-10 ml-1">按办理方式分类，选择适合自己的开户途径</p>
+
+      <!-- 内地见证 -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">🏢 内地见证办理</span>
+          <span class="text-gray-400 text-xs">在内地网点完成身份见证，无需亲赴香港</span>
+        </div>
+        <p class="text-xs text-gray-400 mb-5 ml-1">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-witness"></div>
+      </div>
+
+      <!-- 线上办理 -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">💻 线上办理</span>
+          <span class="text-gray-400 text-xs">无需到店，全程线上完成</span>
+        </div>
+        <p class="text-xs text-gray-400 mb-5 ml-1">详细教程请关注「华尔街强哥」公众号</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-online"></div>
+      </div>
+
+      <!-- 赴港办卡 -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">✈️ 赴港办卡</span>
+          <span class="text-gray-400 text-xs">连接香港 WiFi，全程线上开户，无需到店</span>
+        </div>
+        <p class="text-xs text-gray-400 mb-5 ml-1">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街强哥」公众号</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-hk"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-center text-lg font-bold text-gray-900 mb-8">联系我 · 关注获取最新活动</h2>
+      <div class="flex flex-col sm:flex-row justify-center gap-10 mb-8">
+        <div class="flex flex-col items-center gap-3">
+          <img src="images/qr-official.jpg" class="w-36 h-36 rounded-2xl object-cover" alt="公众号二维码">
+          <div class="text-center">
+            <div class="font-semibold text-gray-900">公众号</div>
+            <div class="text-sm text-gray-500">华尔街强哥</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="images/qr-wechat.jpg" class="w-36 h-36 rounded-2xl object-cover" alt="微信二维码">
+          <div class="text-center">
+            <div class="font-semibold text-gray-900">微信</div>
+            <div class="text-sm text-gray-500">huaerjieqiangge</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-100 pt-6 text-center text-xs text-gray-400 space-y-1">
+        <p>本站仅作信息参考，不构成投资建议。活动详情以各券商及银行官网为准。</p>
+        <p>本站包含推荐链接，通过链接开户博主可能获得奖励。</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /list-view -->
+
+<!-- ===== DETAIL VIEW ===== -->
+<div id="detail-view" class="max-w-2xl mx-auto px-4 py-8 page-enter">
+
+  <button onclick="showList()" class="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-6 transition-colors text-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    返回列表
+  </button>
+
+  <!-- 机构名称 + 标签 -->
+  <div class="flex items-center gap-4 mb-6">
+    <div id="d-icon" class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold flex-shrink-0"></div>
+    <div>
+      <h2 id="d-name" class="text-2xl font-bold text-gray-900"></h2>
+      <span id="d-tag" class="text-xs text-gray-400"></span>
+    </div>
+  </div>
+
+  <!-- 状态提示（暂停类券商） -->
+  <div id="d-status-section" style="display:none;" class="mb-6">
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-800">
+      <span class="font-bold">⚠️ 注意：</span><span id="d-status-note"></span>
+    </div>
+  </div>
+
+  <!-- 本月奖励海报（仅券商） -->
+  <div id="d-poster-section" class="mb-6">
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">🎁 本月奖励海报</h3>
+    <div id="d-poster" class="rounded-2xl overflow-hidden w-full"></div>
+  </div>
+
+  <!-- 邀请码（有邀请码时显示） -->
+  <div id="d-code-section" class="mb-6">
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">🎟 邀请码</h3>
+    <div class="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between">
+      <span id="d-code" class="font-mono font-bold text-xl text-gray-900 tracking-widest"></span>
+      <button id="copy-btn" onclick="copyCode()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors">
+        复制
+      </button>
+    </div>
+  </div>
+
+  <!-- 优缺点 + 条件（内地见证银行专属） -->
+  <div id="d-bank-info" style="display:none;" class="mb-6 space-y-4">
+    <div>
+      <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">✅ 优点</h3>
+      <div id="d-pros" class="bg-green-50 rounded-2xl p-5 space-y-2 text-sm text-gray-700 leading-relaxed"></div>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">⚠️ 缺点</h3>
+      <div id="d-cons" class="bg-red-50 rounded-2xl p-5 space-y-2 text-sm text-gray-700 leading-relaxed"></div>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📋 开户条件</h3>
+      <div id="d-conditions" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📍 见证地点</h3>
+      <div id="d-location" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">⏱️ 开户周期</h3>
+      <div id="d-time" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+    </div>
+  </div>
+
+  <!-- 预约联系（内地见证银行专属） -->
+  <div id="d-contact-section" style="display:none;" class="mb-6">
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📞 办理方式</h3>
+    <div class="bg-blue-50 rounded-2xl p-5">
+      <div class="font-semibold text-gray-900 mb-1">联系「华尔街强哥」咨询预约</div>
+      <div class="text-sm text-gray-500 mb-4">添加微信发送消息，即可获取最新见证开户资料及预约指引</div>
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <img src="images/qr-wechat.jpg" class="w-32 h-32 rounded-xl object-cover flex-shrink-0" alt="微信二维码">
+        <div class="flex flex-col gap-3 w-full">
+          <div class="text-xs text-gray-400">微信号</div>
+          <div class="bg-white rounded-xl px-4 py-3 flex items-center justify-between border border-blue-100">
+            <span id="wechat-id" class="font-mono font-bold text-gray-900 tracking-wide">huaerjieqiangge</span>
+            <button onclick="copyWechat()" id="wechat-copy-btn"
+              class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
+              复制
+            </button>
+          </div>
+          <div class="text-xs text-gray-400">长按或扫描二维码添加微信</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公众号教程（赴港银行专属） -->
+  <div id="d-pubaccount-section" style="display:none;" class="mb-6">
+    <!-- 银行简介 -->
+    <p id="d-bank-desc" class="text-sm text-gray-600 leading-relaxed mb-5"></p>
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📖 开户教程</h3>
+    <div class="bg-purple-50 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4">
+      <img src="images/qr-official.jpg" class="w-28 h-28 rounded-xl object-cover flex-shrink-0" alt="公众号二维码">
+      <div class="flex flex-col gap-3">
+        <div>
+          <div class="font-semibold text-gray-900 mb-1">「华尔街强哥」公众号图文教程</div>
+          <div class="text-sm text-gray-500">点击下方按钮查看详细开户步骤，或扫描左侧二维码关注公众号</div>
+        </div>
+        <a id="d-article-link" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors self-start" style="display:none;">
+          查看微信公众号开户教程 →
+        </a>
+        <span id="d-article-placeholder" class="text-xs text-gray-400" style="display:none;">教程链接待更新，请关注公众号查看</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 开户流程（券商 + 线上/赴港银行） -->
+  <div id="d-tutorial-section" class="mb-6">
+    <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📋 开户流程</h3>
+    <div id="d-tutorial" class="bg-white rounded-2xl border border-gray-100 p-5 space-y-3 text-sm text-gray-700 leading-relaxed"></div>
+  </div>
+
+  <!-- 开户 / 申请按钮 -->
+  <a id="d-link" href="#" target="_blank" rel="noopener noreferrer"
+     class="block text-center text-white font-bold py-4 rounded-2xl text-base transition-colors mb-4">
+    立即开户 →
+  </a>
+
+</div><!-- /detail-view -->
+
+<script>
+// ============================================================
+// 券商数据
+// ============================================================
+const brokers = [
+  // ---------- 内地身份 ----------
+  {
+    id: 'fuxing',
+    group: 'mainland',
+    name: '复星证券',
+    tag: '香港持牌 · 终身免佣 · 推荐',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-red-50',
+    iconColor: 'text-red-500',
+    btnColor: 'bg-red-500 hover:bg-red-600',
+    link: 'https://h5.fotechwealth.com/pages/startAccount.html?channel=030002&aeCode=B2&invitationCode=2N2K5K&langType=zhCn',
+    code: '2N2K5K',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮，跳转复星证券官网',
+      '② 下载复星证券 App，完成手机号注册',
+      '③ 上传大陆居民身份证正反面',
+      '④ 完成人脸识别验证',
+      '⑤ 填写银行卡信息，等待审核（1-3 个工作日）',
+      '⑥ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
+    ],
+  },
+  {
+    id: 'panda',
+    group: 'mainland',
+    name: '熊猫证券',
+    tag: '香港持牌 · 0平台费 · 备用',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-slate-50',
+    iconColor: '',
+    btnColor: 'bg-slate-600 hover:bg-slate-700',
+    link: 'https://panda.activity.wbrks.com/pages/panda/8939/index.html?app_id=panda&org_id=1&account_channel=hk_panda&invite-code=SPU78FYJ&utm_source=panda_app_share',
+    code: 'SPU78FYJ',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 注册账号，填写个人信息',
+      '③ 上传大陆居民身份证',
+      '④ 完成身份验证',
+      '⑤ 入金不少于 5,000 HKD 并至少交易一次',
+      '⑥ 享受港股 0.025%（最低 1.8 HKD）、美股 0 佣金、0 平台费专属优惠',
+    ],
+  },
+  {
+    id: 'zhuorui',
+    group: 'mainland',
+    name: '卓锐证券',
+    tag: '香港持牌 · 可买加密货币及出金',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-purple-50',
+    iconColor: 'text-purple-600',
+    btnColor: 'bg-purple-600 hover:bg-purple-700',
+    link: 'https://openindie.zrsec.com/zhuorui_web_h5/?channelId=100616',
+    code: '',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 下载卓锐 App 并完成注册',
+      '③ 上传大陆居民身份证',
+      '④ 完成身份核验',
+      '⑤ 审核通过后入金领取开户奖励',
+      '⑥ 支持加密货币交易及出金',
+    ],
+  },
+  {
+    id: 'bbae',
+    group: 'mainland',
+    name: 'BBAE（必贝证券）',
+    tag: '美国持牌 · 免佣 · 免CRS',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-sky-50',
+    iconColor: 'text-sky-600',
+    btnColor: 'bg-sky-500 hover:bg-sky-600',
+    link: 'https://www.bbae.com/',
+    code: '',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 注册 BBAE 账号并完成 KYC 认证',
+      '③ 上传身份证件',
+      '④ 等待账户审核通过',
+      '⑤ 入金开始交易，享受全免佣优惠',
+      '⑥ 美国持牌，免 CRS，隐私保护好',
+    ],
+  },
+  {
+    id: 'yingli-hk',
+    group: 'mainland',
+    name: '盈立证券（香港）',
+    tag: '香港持牌 · 周大福背景 · 内地身份可开',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-emerald-50',
+    iconColor: 'text-emerald-600',
+    btnColor: 'bg-emerald-600 hover:bg-emerald-700',
+    link: 'https://m.usmart66.com/webapp/open-account/apply.html?ICode=U02857#/register',
+    code: 'U02857',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 注册账号，填写个人信息',
+      '③ 上传大陆居民身份证',
+      '④ 完成视频认证或人脸识别',
+      '⑤ 审核通过后入金（入金 30 天内需交易一次）',
+      '⑥ 注意：香港和新加坡奖励只能领一个，以第一个交易为准',
+    ],
+  },
+  {
+    id: 'yingli-sg',
+    group: 'mainland',
+    name: '盈立证券（新加坡）',
+    tag: '新加坡持牌 · 可交易加密货币ETF',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-teal-50',
+    iconColor: 'text-teal-600',
+    btnColor: 'bg-teal-600 hover:bg-teal-700',
+    link: 'https://m.usmartsg.com/promo/overseas/sg-register.html?langType=1&HCode=nyrke4&HBox=1#/marketing-register',
+    code: 'nyrke4',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 选择新加坡账户类型',
+      '③ 上传大陆居民身份证',
+      '④ 完成认证流程',
+      '⑤ 入金 30 天内需交易一次',
+      '⑥ 两账户（香港/新加坡）资金互转无需新加坡卡；奖励只能领一个',
+    ],
+  },
+  {
+    id: 'ibkr',
+    group: 'mainland',
+    name: '盈透证券 IBKR',
+    tag: '全球最大互联网券商 · 美股最便宜',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-blue-50',
+    iconColor: 'text-blue-700',
+    btnColor: 'bg-blue-700 hover:bg-blue-800',
+    link: 'https://ibkr.com/referral/zhongqiang110',
+    code: '',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮（注册需梯子，日常使用不需要）',
+      '② 填写个人信息完成注册',
+      '③ 上传身份证件，完成 KYC',
+      '④ 等待审核通过',
+      '⑤ 入金后即可交易，最多可获得 1,000 美元奖励',
+    ],
+  },
+
+  // ---------- 海外身份 ----------
+  {
+    id: 'longbridge',
+    group: 'overseas',
+    name: '长桥证券（香港）',
+    tag: 'Longbridge · 阿里背景 · 终身免佣',
+    icon: 'data:image/webp;base64,UklGRugDAABXRUJQVlA4WAoAAAAQAAAAfwAAfwAAQUxQSHAAAAABcNw2kiMp/6TrNw6t3t2zETEBrE7BHJzCz0jx+yK4J5IborksomsiuyC6UxFuRpSHIj0Q7TZEvAlRb0HkH4D8/f/3/w+g2PEA4EYLMKMJeNEGrBh1YtyIZuDDvA1LTVjtwXoLthqwvTqOrIyDK2I1VlA4IFIDAADwFwCdASqAAIAAPmEskkYkIr+hK5kJK/AMCWMA1qYm/lehr/Enmo9kjInoC+q/eBkAPFA3W7rUf4p6i37Gdbb5Ueawf2bnM7Hj+9/jtYw54fRa9TFyhHBYooWH0eKX0bxpLVIsdTVHCsXHotQXDoSTPhgSSJfd6j38OPyackOh46qBlvT7Khb3GQa3BqprCOw1HTObDqlpIcOf5Q3oRU+tcLVaepnVrzYmRbkAvpzuMTi1orVxHQOtNbm0LKJ3GGxJhFfuoNbwIAD+L5PZxn7O6cJ97esYt4hZp9L5OeseIFa4rcaD3no1UDYuvSupjyuVweDSjFShAB2bkdTDRXXkdFV/HL0WuxTWg2VRGKwe38zMV4/yGJc/6bHuXmFvz8GunBU4NKBH/zlmTaY1TZ2gsAvGVefaQyLyKVknRKeqUbX9n5ssaxG3/Fmr9p1zpv7jExt8YC+5dU9Yd6oqrN8Zg1M5/mwS29c3f/cYKIBKaDLnmD2LqqyU9UlziFFcEiJkoRd2Jk1coB/k1wVCgyBwDLkqNhyqnzRlIhTzLjOegVlerTPBtav+WO//3/Ah58KNRCC4139/poZvLNEWEblRmFLlnNCMoWUexoCKR//SMoZpC9D+y2cK4Lf7bGzXRjyGZe6Z5P388+mKs3oMGvTnU+6eXoW77CLenD3ttfltpLUher0aw4MlmdndNRMWv31T0eqIJOoB7VPGNveSP8mj9Lda4urC+VQ78j7D4zUasIyXfATH0G/8/7ZdSU8/iMrb1NEVWp4Pl5/oylw/X8uEr+VAI5y0VcVf/ah83B1vmF5b9UOX2yeHBC9yBnh8PMNnqxrDV8+yN6M0gz6woGodX6miF1ursrFG5krTKsC2tUBtAHHSZs/LTAdqfNe+M65VV82lf1uTGBw6QMsox8RUC902N2qFu31sU5PPbNy0WEHI+Ty1J0ZfwG/OELb+u9oUKcaNRbyP39hdnJiG/HG6DJ8dP/3EQv6ClFMi9sfkiII+cyjNDGm/gfyH3QM/1mBvf+DC2PzxWyN8aEAzrx453m0UBJ4drCja2klgeEPo/YPvdA/L8+Q901+k2cus/56/vnsFESVVSVl/ds/JW782ksIhHX5PnV34EPmeIu/EAAAA',
+    iconBg: 'bg-green-50',
+    iconColor: '',
+    btnColor: 'bg-green-600 hover:bg-green-700',
+    link: 'https://activity.longbridgehk.com/certification?ce_redirect_lb=true&invite-code=WZZP5J&channel=HB100040',
+    code: 'WZZP5J',
+    statusNote: '长桥香港不允许大陆身份新开户，需持香港/新加坡等境外证件。已开户的同学不受影响，仍可正常入金拿奖励。',
+    poster: '',
+    tutorial: [
+      '① 已开户同学：可正常入金，完成 1 万 HKD 入金即可享受奖励',
+      '② 完成企业认证可额外获得 200 奖励（App → 我的 → 活动中心 → 认证专区）',
+      '③ 留存 30 天、60 天可分批领完奖励',
+      '④ 新用户需持香港、新加坡等境外证件方可开户',
+      '⑤ 注意：香港和新加坡奖励只能领一个',
+    ],
+  },
+  {
+    id: 'longbridge-sg',
+    group: 'overseas',
+    name: '长桥证券（新加坡）',
+    tag: 'Longbridge SG · 可交易 BTC 相关 ETF',
+    icon: 'data:image/webp;base64,UklGRugDAABXRUJQVlA4WAoAAAAQAAAAfwAAfwAAQUxQSHAAAAABcNw2kiMp/6TrNw6t3t2zETEBrE7BHJzCz0jx+yK4J5IborksomsiuyC6UxFuRpSHIj0Q7TZEvAlRb0HkH4D8/f/3/w+g2PEA4EYLMKMJeNEGrBh1YtyIZuDDvA1LTVjtwXoLthqwvTqOrIyDK2I1VlA4IFIDAADwFwCdASqAAIAAPmEskkYkIr+hK5kJK/AMCWMA1qYm/lehr/Enmo9kjInoC+q/eBkAPFA3W7rUf4p6i37Gdbb5Ueawf2bnM7Hj+9/jtYw54fRa9TFyhHBYooWH0eKX0bxpLVIsdTVHCsXHotQXDoSTPhgSSJfd6j38OPyackOh46qBlvT7Khb3GQa3BqprCOw1HTObDqlpIcOf5Q3oRU+tcLVaepnVrzYmRbkAvpzuMTi1orVxHQOtNbm0LKJ3GGxJhFfuoNbwIAD+L5PZxn7O6cJ97esYt4hZp9L5OeseIFa4rcaD3no1UDYuvSupjyuVweDSjFShAB2bkdTDRXXkdFV/HL0WuxTWg2VRGKwe38zMV4/yGJc/6bHuXmFvz8GunBU4NKBH/zlmTaY1TZ2gsAvGVefaQyLyKVknRKeqUbX9n5ssaxG3/Fmr9p1zpv7jExt8YC+5dU9Yd6oqrN8Zg1M5/mwS29c3f/cYKIBKaDLnmD2LqqyU9UlziFFcEiJkoRd2Jk1coB/k1wVCgyBwDLkqNhyqnzRlIhTzLjOegVlerTPBtav+WO//3/Ah58KNRCC4139/poZvLNEWEblRmFLlnNCMoWUexoCKR//SMoZpC9D+y2cK4Lf7bGzXRjyGZe6Z5P388+mKs3oMGvTnU+6eXoW77CLenD3ttfltpLUher0aw4MlmdndNRMWv31T0eqIJOoB7VPGNveSP8mj9Lda4urC+VQ78j7D4zUasIyXfATH0G/8/7ZdSU8/iMrb1NEVWp4Pl5/oylw/X8uEr+VAI5y0VcVf/ah83B1vmF5b9UOX2yeHBC9yBnh8PMNnqxrDV8+yN6M0gz6woGodX6miF1ursrFG5krTKsC2tUBtAHHSZs/LTAdqfNe+M65VV82lf1uTGBw6QMsox8RUC902N2qFu31sU5PPbNy0WEHI+Ty1J0ZfwG/OELb+u9oUKcaNRbyP39hdnJiG/HG6DJ8dP/3EQv6ClFMi9sfkiII+cyjNDGm/gfyH3QM/1mBvf+DC2PzxWyN8aEAzrx453m0UBJ4drCja2klgeEPo/YPvdA/L8+Q901+k2cus/56/vnsFESVVSVl/ds/JW782ksIhHX5PnV34EPmeIu/EAAAA',
+    iconBg: 'bg-lime-50',
+    iconColor: '',
+    btnColor: 'bg-lime-600 hover:bg-lime-700',
+    link: 'https://tinyurl.com/n3kjtfsh?channel=SHKN00016&invite-code=WZZP5J',
+    code: 'WZZP5J',
+    poster: '',
+    tutorial: [
+      '① 点击上方「立即开户」按钮',
+      '② 需持有新加坡等境外证件',
+      '③ 注册时填入邀请码',
+      '④ 完成 KYC 实名认证',
+      '⑤ 新加坡账户企业认证需在香港长桥账户内完成',
+      '⑥ 可交易 BTC 相关 ETF 及股票',
+    ],
+  },
+  {
+    id: 'tiger',
+    group: 'overseas',
+    name: '老虎证券',
+    tag: 'Tiger Brokers · 小米背景 · 美股打新',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-blue-50',
+    iconColor: '',
+    btnColor: 'bg-blue-500 hover:bg-blue-600',
+    link: 'https://tigr.link/9AtXAY',
+    code: 'TIGERDZQ',
+    statusNote: '老虎证券仅限海外身份（香港/新加坡等境外证件）开户，大陆身份不可开。当前暂停入金，恢复后入金留存 60 天可领奖励。',
+    poster: '',
+    tutorial: [
+      '① 需持有香港、新加坡等境外证件方可开户',
+      '② 点击「立即开户」，下载老虎证券 App',
+      '③ 注册时填入邀请码',
+      '④ 上传证件，完成 KYC',
+      '⑤ 当前暂停入金，恢复后入金留存 60 天可领奖励，入金越多奖励越高',
+    ],
+  },
+  {
+    id: 'hsthk',
+    group: 'overseas',
+    name: '华盛通',
+    tag: '新浪背景 · 港美股打新中签率高',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-indigo-50',
+    iconColor: 'text-indigo-600',
+    btnColor: 'bg-indigo-500 hover:bg-indigo-600',
+    link: 'https://www.hstbroker.com/kh/apply/online?_scnl=WIBB',
+    code: 'WIBB',
+    statusNote: '华盛通仅限海外身份（香港/新加坡等境外证件）开户，大陆身份不可开。当前暂停入金，恢复后入金 1 万留存 30 天可领奖励。',
+    poster: '',
+    tutorial: [
+      '① 需持有香港、新加坡等境外证件方可开户',
+      '② 点击「立即开户」',
+      '③ 填入邀请码注册',
+      '④ 完成 KYC 认证',
+      '⑤ 当前暂停入金，恢复后入金 1 万留存 30 天可领奖励',
+    ],
+  },
+  {
+    id: 'futu',
+    group: 'overseas',
+    name: '富途牛牛',
+    tag: 'Futu · 腾讯背景 · 需联系群主',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-orange-50',
+    iconColor: '',
+    btnColor: 'bg-orange-500 hover:bg-orange-600',
+    link: 'https://www.futunn.com/',
+    code: '',
+    poster: '',
+    tutorial: [
+      '① 富途开户难度较大，请勿自行尝试，否则可能永远无法开户',
+      '② 请先完成长桥入金，再联系群主「华尔街强哥」申请开富途',
+      '③ 可先登记，等群主私聊安排',
+      '④ 兑换码有效期仅 7 天，超期需重新绑定再入金',
+      '⑤ 下载富途牛牛 App，按群主指引输入兑换码完成绑定',
+    ],
+  },
+];
+
+// ============================================================
+// 银行数据（category: 'witness' | 'online' | 'hk'）
+// ============================================================
+const banks = [
+  // ---------- 内地见证 ----------
+  {
+    id: 'scb',
+    category: 'witness',
+    name: '渣打银行',
+    tag: 'Standard Chartered · 纯外资 · 最推荐',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-green-50',
+    iconColor: 'text-green-700',
+    btnColor: 'bg-green-700 hover:bg-green-800',
+    pros: [
+      '纯外资银行，不会主动申报 CRS，隐私保护好',
+      '同时可开新加坡渣打账户，方便加密货币圈出金',
+      '高级账户全球汇款免费、秒到，三个月后可降级，免管理费',
+      '面向高净值客户，不易被关户',
+    ],
+    cons: [
+      '需存入 50 万元并锁定三个月（可选定存或理财，自行选择）',
+    ],
+    conditions: '港澳通行证或护照 · 约 500 元律师见证费 · 存 50 万',
+    location: '全国大部分城市均有见证网点',
+    time: '约 2-3 周',
+  },
+  {
+    id: 'hangseng',
+    category: 'witness',
+    name: '恒生银行',
+    tag: 'Hang Seng Bank · 一拖三 · 仅一线城市',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-red-50',
+    iconColor: 'text-red-600',
+    btnColor: 'bg-red-500 hover:bg-red-600',
+    pros: [
+      '只需中农工建交、招行等 6 家银行 App 显示 50 万存款即可，无需真实转入',
+      '高级账户全球汇款免费，6 个月后可降级，免管理费',
+      '存 50 万可全家办理（一拖三），方便全家换汇',
+    ],
+    cons: [
+      '与汇丰同属汇丰集团，相对容易关户',
+      '仅限北京、上海等一线城市见证开户',
+    ],
+    conditions: '港澳通行证或护照 · 约 500 元见证费 · 6 家银行 App 显示 50 万存款',
+    location: '仅限北京、上海等一线城市（10 人可上门团办）',
+    time: '约 2-3 周',
+  },
+  {
+    id: 'ncb',
+    category: 'witness',
+    name: '南洋商业银行',
+    tag: 'NCB · 低门槛 · 下卡快 · 仅北京',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-amber-50',
+    iconColor: 'text-amber-600',
+    btnColor: 'bg-amber-500 hover:bg-amber-600',
+    pros: [
+      '存 10 万锁 6 个月，门槛低（无需 50 万）',
+      '普通账户，无管理费，下卡速度极快（1-2 个工作日）',
+      '6 人可上门团办，方便组团',
+    ],
+    cons: [
+      '跨境汇款费用较高（建议用兴业寰宇人生等渠道汇款）',
+      '仅限北京办理，外地需出差前往',
+    ],
+    conditions: '护照 + 90 天以上签证（如尼泊尔签证）· 约 500 元见证费 · 存 10 万',
+    location: '仅限北京（可出差办理，6 人可上门团办）',
+    time: '约 1-2 个工作日（下卡极快）',
+  },
+  {
+    id: 'bea',
+    category: 'witness',
+    name: '东亚银行',
+    tag: 'Bank of East Asia · 高级账户 · 可办信用卡',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-sky-50',
+    iconColor: 'text-sky-600',
+    btnColor: 'bg-sky-500 hover:bg-sky-600',
+    pros: [
+      '存 10 万锁 3 个月，办理高级账户',
+      '东亚中国存款利率较高',
+      '港卡可办理信用卡，享受更多港卡羊毛',
+    ],
+    cons: [
+      '跨境汇款费用较高（建议用兴业寰宇人生等渠道汇款）',
+      '仅限北京办理，开户周期约 1-2 个月',
+    ],
+    conditions: '护照 + 90 天以上签证（如尼泊尔签证）· 存 10 万',
+    location: '仅限北京（可出差办理，6 人可上门团办）',
+    time: '约 1-2 个月',
+  },
+  {
+    id: 'hsbc',
+    category: 'witness',
+    name: '汇丰银行',
+    tag: 'HSBC · 香港发钞行 · 武汉唯一可选',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-rose-50',
+    iconColor: 'text-rose-600',
+    btnColor: 'bg-rose-600 hover:bg-rose-700',
+    link: 'https://www.services.cn-banking.hsbc.com.cn/PublicContent/wechat/rbwm_wechat_banking/index.html#/emgm/emgmShare?refNumber=WVFZNzA2ODc%3D&channel=MOBILE&a=0.49702502955347394&shareType=2&tsl=175475783135',
+    pros: [
+      '香港发钞行，全球知名品牌',
+      '武汉等无其他港卡网点地区的唯一选择',
+      '有条件者推荐直接赴港办理，更快更方便',
+    ],
+    cons: [
+      '需存 50 万，与恒生同属汇丰集团，相对容易关户',
+    ],
+    conditions: '身份证 + 港澳通行证 · 需存 50 万',
+    location: '北京、上海、广州等一线城市（武汉地区仅能办汇丰）',
+    time: '约 5 个工作日',
+  },
+
+  // ---------- 线上办理 ----------
+  {
+    id: 'ifast',
+    category: 'online',
+    name: 'iFAST Global Bank',
+    tag: '新加坡持牌 · 全程线上 · 可入金券商',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-blue-50',
+    iconColor: 'text-blue-600',
+    btnColor: 'bg-blue-600 hover:bg-blue-700',
+    link: 'https://www.ifastgb.com/',
+    tutorial: [
+      '① 点击上方「立即申请」按钮，访问 iFAST Global Bank 官网',
+      '② 下载 iFAST Global Bank App',
+      '③ 填写个人信息，上传身份证件完成 KYC',
+      '④ 全程线上完成，无需到店',
+      '⑤ 账户开通后可用于港美股券商入金',
+      '⑥ 详细教程请关注「华尔街强哥」公众号',
+    ],
+  },
+
+  // ---------- 赴港办卡 ----------
+  {
+    id: 'zabank',
+    category: 'hk',
+    name: '众安银行',
+    tag: 'ZA Bank · 香港虚拟银行 · 开户便捷',
+    icon: 'data:image/webp;base64,UklGRroFAABXRUJQVlA4WAoAAAAQAAAAfwAAfwAAQUxQSHAAAAABcNw2kiMp/6TrNw6t3t2zETEBrE7BHJzCz0jx+yK4J5IborksomsiuyC6UxFuRpSHIj0Q7TZEvAlRb0HkH4D8/f/3/w+g2PEA4EYLMKMJeNEGrBh1YtyIZuDDvA1LTVjtwXoLthqwvTqOrIyDK2I1VlA4ICQFAABQHgCdASqAAIAAPmEokEWkIqGWS9VUQAYEoAyIycfN8pT1fM9fjc3c63xJOnH5mPOK07Tn2vZ9yCqHmYbwo0uk63/m+VsYXej3b2Y5y9UmIkY+L+X0PRM5ifmXEUyy3FsXmCyk4M5q5Dy8x8TXHiAf1AqEG1HD2AE3wH1wsgEsiTb9LOOUM2E5CofspRH52moQl3F8Tj4ablOSB8wrS4SZeH4j2s2+QHOl4JfmxTsvjX3bDIt5tubBmLpW/5610vC8SJaUdM/fA855LgB4DEetmlRBSngAGVYvm78p8W7Oyx73XQ9NUoif0wwBJZWfio7jLhg/6a+aVl/MQAD+7pr+T8wP4dhYfzXc5Z92uZhntnDATDAg+X6dhGL+ffspCzu/vvpx7vNV14A+mzmdGvhVxxR8v+syQe90Ykjfi8o98edeN6i5VPgTxLMe3VX1+D95SPmimwKgVBnnHOQL8MdeevGjMkgwv92IPprbZDS2SjIVLXmbKxIvnLdnTjuI2nERpbnQXTVcI/3G6GlAvgvqZrdK57LLx768fwE2X58Dt3Lme3pfTEbYrVF+Ea+a5qEPGpEfEUZnGrcR01ipiCh8z7taqNARIdPlGgthlEvfTtfhHrm55CS3yUE339IfKlHan867aQ2cDhf3DOGL4MmJaF4MISXyiakwlqlTMjtX197HXlAXCAV9NMAa0Aizc6Ws6C/H3/dMV9F6h7pLB4r4rOr6pfHs9JPR/1JSZpmo8j+k8/HoP1wpm7rv95QFq7JgKpQwPTJ/oPk57cjDUxw1ImK1yx1oukpJe0HcDTihn+s9mulykrM4QVXUreRCj88xScK8eocJ1XIgSSvZvt2vGkP6lUSeiEi2h/+/O6FeEbVL29hccW9x0oK3eN473zk8ILjiREfh5/r6yTXqZur13Gnvxb0UeF6CaAynAt35mH0aMgQxQJGY/Q+m8I77IUWkfcHuFGSkEWni+VQ50nBhEzhEu5OW5g7IuOrC+VH/JxAngrr3712cwEbce09Wq4nqyeHJrJWlrbmNcqK7UKpUHk13DAftBWxxYKp/gjkHInJEMfnCSJziULg6V9+MzUhIpf/r5bH7IroCEWbvQapFsh6VSUEET00fD/T4Iih/5exkMhs271UwbweFyOUJ+vFdRP4jg/wqxwrck2hNKKpkaltWHGx/KmpP/pRyron+gYtqBhbAlVfM9cjdV5+6meOe0MfYmlAbUUBpYFXEK88Bof1yPIwT+cKxrZ/n7AkIP0cZWHN3cYNf9v+5TNT48KpRxkSwaHXgnB1ENu2E+HwbVTOjkitvxKZ/MU9+q6FzIfjsOxO5MxUyjI+Z2p7E2sFTzk7ZowIBwsG547Z7cCPjcxY5MqpHbJ9tjkoAVOYxfNTfvfMt/SDAbsozKJQGxuxcz3VGaluoYDVCqSjl+5kEaTgiPcbMfAGiXcAPmA9yvilWm2A5Lhu/Xr0doUXDfa6TEuUYCy5e3Cq7ewkfpPkQgcBd2CvQ0F/hXIYndhS5nXTYqkZ4wZN0mFjakOU5Esz0JIJ03ckfNdbQs8l+VU9Lzvvo9KixpN/DO2FxgbXuLhPYV6H0y+lDkQbB6bLx/hGWM3OIf1WzbQgu3lzIOybYAR1eU2RYyRs2FFqOhd6yM9Tazg92HEat3oQRgfxmHgkZPUqq5/J4xlF0+b+yV6fg/PuGgY4YvTny2buXWu0RMMwoG1dTU+7Wy4xkfqPoJZ/nxba4h9UEyIWuaZ/bK/PwiQcAAA==',
+    iconBg: 'bg-violet-50',
+    iconColor: 'text-violet-600',
+    btnColor: 'bg-violet-600 hover:bg-violet-700',
+    desc: '众安银行（ZA Bank）是香港首批虚拟银行之一，开户全程线上完成，连接香港 WiFi 后下载 App 即可申请，无需到店，开户速度快，适合作为港美股券商入金的工具账户。',
+    articleLink: '',  // 填入公众号文章链接，如 https://mp.weixin.qq.com/s/xxx
+  },
+  {
+    id: 'hsbc-hk',
+    category: 'hk',
+    name: '汇丰银行（赴港）',
+    tag: 'HSBC HK · 香港发钞行 · 功能全面',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-rose-50',
+    iconColor: 'text-rose-600',
+    btnColor: 'bg-rose-600 hover:bg-rose-700',
+    desc: '汇丰香港（HSBC HK）是香港三家发钞行之一，品牌实力雄厚。连接香港 WiFi 后可线上申请香港 One 账户，账户功能完善，支持港美股券商入金及全球汇款，适合长期持有。',
+    articleLink: '',  // 填入公众号文章链接
+  },
+  {
+    id: 'bochk',
+    category: 'hk',
+    name: '中银香港',
+    tag: 'BOCHK · 中资背景 · 内地人开户方便',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-red-50',
+    iconColor: 'text-red-700',
+    btnColor: 'bg-red-700 hover:bg-red-800',
+    desc: '中银香港（BOCHK）是中国银行旗下香港子行，对内地客户友好，开户审核相对宽松。连接香港 WiFi 后可通过官网或 App 线上开户，账户可用于港美股券商入金及日常换汇。',
+    articleLink: 'https://mp.weixin.qq.com/s/hYpsNfYpZ2ZBZJGYbu_gfA',
+  },
+  {
+    id: 'ccbasia',
+    category: 'hk',
+    name: '建行亚洲',
+    tag: 'CCB Asia · 中资背景 · 内地人开户方便',
+    icon: 'data:image/webp;base64,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',
+    iconBg: 'bg-orange-50',
+    iconColor: 'text-orange-600',
+    btnColor: 'bg-orange-500 hover:bg-orange-600',
+    desc: '建行亚洲（CCB Asia）是建设银行旗下香港子行，中资背景，内地客户开户便利。连接香港 WiFi 后可线上完成开户，账户支持港美股券商入金及跨境转账。',
+    articleLink: '',  // 填入公众号文章链接
+  },
+];
+
+// ============================================================
+// 渲染逻辑
+// ============================================================
+function renderCard(item, isBank = false) {
+  const statusBadge = item.status
+    ? `<div class="absolute top-2 right-2 bg-red-100 text-red-600 text-xs font-semibold px-2 py-0.5 rounded-full">${item.status}</div>`
+    : '';
+  return `
+    <div onclick="showDetail('${item.id}', ${isBank})"
+         class="relative bg-white rounded-2xl shadow-sm border border-gray-100 p-4 card-hover flex flex-col items-center text-center">
+      ${statusBadge}
+      <div class="w-12 h-12 rounded-xl ${item.icon.startsWith('data:') ? 'overflow-hidden' : item.iconBg} flex items-center justify-center text-lg font-bold ${item.iconColor} mb-3 flex-shrink-0">
+        ${item.icon.startsWith('data:') ? `<img src="${item.icon}" class="w-full h-full object-cover">` : item.icon}
+      </div>
+      <div class="font-semibold text-gray-900 text-sm leading-tight mb-1">${item.name}</div>
+      <div class="text-xs text-gray-400 mb-3 leading-tight">${item.tag.split('·')[0].trim()}</div>
+      <div class="mt-auto w-full text-center ${item.btnColor} text-white text-xs font-semibold py-2 rounded-xl transition-colors">
+        查看详情
+      </div>
+    </div>`;
+}
+
+document.getElementById('grid-mainland').innerHTML =
+  brokers.filter(b => b.group === 'mainland').map(b => renderCard(b)).join('');
+document.getElementById('grid-overseas').innerHTML =
+  brokers.filter(b => b.group === 'overseas').map(b => renderCard(b)).join('');
+document.getElementById('grid-bank-witness').innerHTML =
+  banks.filter(b => b.category === 'witness').map(b => renderCard(b, true)).join('');
+document.getElementById('grid-bank-online').innerHTML =
+  banks.filter(b => b.category === 'online').map(b => renderCard(b, true)).join('');
+document.getElementById('grid-bank-hk').innerHTML =
+  banks.filter(b => b.category === 'hk').map(b => renderCard(b, true)).join('');
+
+// ============================================================
+// 页面切换
+// ============================================================
+let currentCode = '';
+
+function showDetail(id, isBank) {
+  const item = isBank ? banks.find(b => b.id === id) : brokers.find(b => b.id === id);
+  if (!item) return;
+
+  // 基本信息
+  const iconEl = document.getElementById('d-icon');
+  if (item.icon.startsWith('data:')) {
+    iconEl.innerHTML = `<img src="${item.icon}" class="w-full h-full object-cover rounded-2xl">`;
+    iconEl.className = 'w-14 h-14 rounded-2xl flex-shrink-0 overflow-hidden';
+  } else {
+    iconEl.textContent = item.icon;
+    iconEl.className = `w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold flex-shrink-0 ${item.iconBg} ${item.iconColor}`;
+  }
+  document.getElementById('d-name').textContent = item.name;
+  document.getElementById('d-tag').textContent = item.tag;
+
+  // 状态提示
+  const statusSection = document.getElementById('d-status-section');
+  if (item.status && item.statusNote) {
+    statusSection.style.display = 'block';
+    document.getElementById('d-status-note').textContent = item.statusNote;
+  } else {
+    statusSection.style.display = 'none';
+  }
+
+  // 海报（仅券商）
+  const posterSection = document.getElementById('d-poster-section');
+  const posterEl = document.getElementById('d-poster');
+  if (!isBank) {
+    posterSection.style.display = 'block';
+    if (item.poster) {
+      posterEl.innerHTML = `<img src="${item.poster}" class="w-full rounded-2xl" alt="${item.name}本月奖励海报">`;
+    } else {
+      posterEl.innerHTML = `<div class="poster-placeholder rounded-2xl flex flex-col items-center justify-center text-gray-400 text-sm py-16">
+        <span class="text-4xl mb-2">🖼️</span>
+        <span>本月奖励海报（待上传）</span>
+      </div>`;
+    }
+  } else {
+    posterSection.style.display = 'none';
+  }
+
+  // 邀请码
+  const codeSection = document.getElementById('d-code-section');
+  if (!isBank && item.code) {
+    codeSection.style.display = 'block';
+    document.getElementById('d-code').textContent = item.code;
+    currentCode = item.code;
+  } else {
+    codeSection.style.display = 'none';
+    currentCode = '';
+  }
+
+  // 内地见证银行：优缺点 / 条件 / 位置 / 时间
+  const bankInfoEl = document.getElementById('d-bank-info');
+  if (isBank && item.category === 'witness' && item.pros) {
+    bankInfoEl.style.display = 'block';
+    document.getElementById('d-pros').innerHTML =
+      item.pros.map(p => `<div class="flex gap-2"><span class="text-green-500 flex-shrink-0">•</span><span>${p}</span></div>`).join('');
+    document.getElementById('d-cons').innerHTML =
+      item.cons.map(c => `<div class="flex gap-2"><span class="text-red-400 flex-shrink-0">•</span><span>${c}</span></div>`).join('');
+    document.getElementById('d-conditions').textContent = item.conditions || '—';
+    document.getElementById('d-location').textContent = item.location || '—';
+    document.getElementById('d-time').textContent = item.time || '—';
+  } else {
+    bankInfoEl.style.display = 'none';
+  }
+
+  // 内地见证银行：预约联系
+  document.getElementById('d-contact-section').style.display =
+    (isBank && item.category === 'witness') ? 'block' : 'none';
+
+  // 赴港银行：简介 + 公众号教程 + 文章链接按钮
+  const pubaccountSection = document.getElementById('d-pubaccount-section');
+  const articleLinkEl = document.getElementById('d-article-link');
+  const articlePlaceholder = document.getElementById('d-article-placeholder');
+  if (isBank && (item.category === 'hk' || item.category === 'online')) {
+    pubaccountSection.style.display = 'block';
+    const descEl = document.getElementById('d-bank-desc');
+    descEl.textContent = item.desc || '';
+    descEl.style.display = item.desc ? 'block' : 'none';
+    if (item.articleLink) {
+      articleLinkEl.href = item.articleLink;
+      articleLinkEl.style.display = 'inline-flex';
+      articlePlaceholder.style.display = 'none';
+    } else {
+      articleLinkEl.style.display = 'none';
+      articlePlaceholder.style.display = 'block';
+    }
+  } else {
+    pubaccountSection.style.display = 'none';
+  }
+
+  // 开户流程：券商 + 线上银行显示，赴港银行和见证银行隐藏
+  const tutorialSection = document.getElementById('d-tutorial-section');
+  if (isBank && (item.category === 'witness' || item.category === 'hk')) {
+    tutorialSection.style.display = 'none';
+  } else {
+    tutorialSection.style.display = 'block';
+    document.getElementById('d-tutorial').innerHTML =
+      item.tutorial.map(step => `<div class="flex gap-2"><span>${step}</span></div>`).join('');
+  }
+
+  // 按钮：券商 + 线上银行显示，赴港/见证银行（无 link）隐藏
+  const linkEl = document.getElementById('d-link');
+  if (item.link) {
+    linkEl.href = item.link;
+    linkEl.className = `block text-center text-white font-bold py-4 rounded-2xl text-base transition-colors mb-4 ${item.btnColor}`;
+    linkEl.textContent = (isBank && item.category === 'online') ? '立即申请 →' : '立即开户 →';
+    linkEl.style.display = 'block';
+  } else {
+    linkEl.style.display = 'none';
+  }
+
+  // 切换视图
+  document.getElementById('list-view').style.display = 'none';
+  const detailEl = document.getElementById('detail-view');
+  detailEl.style.display = 'block';
+  detailEl.classList.remove('page-enter');
+  void detailEl.offsetWidth;
+  detailEl.classList.add('page-enter');
+  window.location.hash = id;
+  window.scrollTo(0, 0);
+}
+
+function showList() {
+  document.getElementById('detail-view').style.display = 'none';
+  document.getElementById('list-view').style.display = 'block';
+  history.pushState('', document.title, window.location.pathname);
+  window.scrollTo(0, 0);
+}
+
+function copyWechat() {
+  const id = document.getElementById('wechat-id').textContent;
+  navigator.clipboard.writeText(id).then(() => {
+    const btn = document.getElementById('wechat-copy-btn');
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+function copyCode() {
+  if (!currentCode) return;
+  navigator.clipboard.writeText(currentCode).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied', 'text-white');
+    setTimeout(() => {
+      btn.textContent = '复制';
+      btn.classList.remove('copied', 'text-white');
+    }, 1500);
+  });
+}
+
+// 支持直接通过 hash 进入详情页
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const broker = brokers.find(b => b.id === hash);
+    const bank = banks.find(b => b.id === hash);
+    if (broker) showDetail(hash, false);
+    else if (bank) showDetail(hash, true);
+  }
+});
+
+window.addEventListener('popstate', () => {
+  if (!window.location.hash) showList();
+});
+</script>
+
+</body>
+</html>
