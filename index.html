@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,36 +9,112 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     body { font-family: 'Inter', 'PingFang SC', 'Helvetica Neue', sans-serif; }
     .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
     .badge-pulse { animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
     .poster-placeholder {
-      background: repeating-linear-gradient(45deg,#f3f4f6,#f3f4f6 10px,#e5e7eb 10px,#e5e7eb 20px);
+      background: repeating-linear-gradient(45deg,#1f2937,#1f2937 10px,#111827 10px,#111827 20px);
     }
     #detail-view { display: none; }
     .page-enter { animation: fadeIn 0.2s ease; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
     .copied { background-color: #22c55e !important; }
+
+    /* ===== LIGHT MODE — Apple style ===== */
+    html[data-theme="light"] body { background-color: #f5f5f7 !important; }
+
+    /* Header：纯白半透明毛玻璃，Apple导航风格 */
+    html[data-theme="light"] header { background-color: rgba(255,255,255,0.82) !important; border-bottom-color: rgba(0,0,0,0.08) !important; }
+    html[data-theme="light"] header span.font-bold { color: #1d1d1f !important; }
+    html[data-theme="light"] #theme-toggle { border-color: rgba(0,0,0,0.12) !important; }
+    html[data-theme="light"] #theme-toggle:hover { background-color: rgba(0,0,0,0.05) !important; }
+
+    /* 通知栏：极浅暖黄，Apple警示风格 */
+    html[data-theme="light"] .notify-bar { background-color: #fdf6e3 !important; border-bottom-color: rgba(0,0,0,0.06) !important; }
+    html[data-theme="light"] .notify-bar > div { color: #6e4c00 !important; }
+
+    /* Hero：从浅灰顶部无缝融入背景 */
+    html[data-theme="light"] #list-view section.bg-gradient-to-b { background: linear-gradient(to bottom, #e8e8ed, #f5f5f7) !important; }
+    html[data-theme="light"] #list-view section.bg-gradient-to-b h1 { color: #1d1d1f !important; }
+    html[data-theme="light"] #list-view section.bg-gradient-to-b p { color: #6e6e73 !important; }
+    html[data-theme="light"] #list-view section.bg-gradient-to-b a { color: rgba(29,29,31,0.6) !important; border-color: rgba(29,29,31,0.2) !important; }
+    html[data-theme="light"] #list-view section.bg-gradient-to-b a:hover { color: #1d1d1f !important; border-color: rgba(29,29,31,0.45) !important; background-color: rgba(29,29,31,0.05) !important; }
+
+    /* 所有模块：纯白卡片，无边框，Apple式极淡阴影 */
+    html[data-theme="light"] #list-view .bg-gray-900,
+    html[data-theme="light"] #detail-view .bg-gray-900 { background-color: #ffffff !important; border-color: transparent !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.04) !important; }
+    html[data-theme="light"] #list-view .bg-gray-800,
+    html[data-theme="light"] #detail-view .bg-gray-800 { background-color: #f5f5f7 !important; border-color: transparent !important; }
+
+    /* 卡片悬停：阴影加深，轻微上浮 */
+    html[data-theme="light"] .card-hover:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 0.5px rgba(0,0,0,0.04) !important; }
+
+    /* 卡片「查看详情」按钮：降饱和+提亮成柔和色 */
+    html[data-theme="light"] #list-view .card-hover .py-2.rounded-xl { filter: saturate(0.85) brightness(1.3) !important; }
+
+    /* 图标背景：加深饱和度让 bg-*-50 有质感 */
+    html[data-theme="light"] #list-view .w-12.h-12.rounded-xl:not(.overflow-hidden) { filter: saturate(2.2) brightness(0.82); }
+    html[data-theme="light"] #detail-view #d-icon:not(.overflow-hidden) { filter: saturate(2.2) brightness(0.82); }
+
+    /* 文字颜色 */
+    html[data-theme="light"] #list-view h2.text-white,
+    html[data-theme="light"] #list-view h3.text-white,
+    html[data-theme="light"] #list-view .font-semibold.text-white { color: #1d1d1f !important; }
+    html[data-theme="light"] #list-view .text-gray-300 { color: #3a3a3c !important; }
+    html[data-theme="light"] #list-view .text-gray-400 { color: #6e6e73 !important; }
+    html[data-theme="light"] #list-view .text-gray-500 { color: #8e8e93 !important; }
+
+    /* Footer：与背景同色，顶部渐变自然衔接 */
+    html[data-theme="light"] footer { background: linear-gradient(to bottom, #f5f5f7 0%, #e8e8ed 22%) !important; border-top: none !important; }
+    html[data-theme="light"] footer h2 { color: #1d1d1f !important; }
+    html[data-theme="light"] footer .font-semibold { color: #1d1d1f !important; }
+    html[data-theme="light"] footer .text-gray-400 { color: #6e6e73 !important; }
+    html[data-theme="light"] footer .text-gray-500 { color: #8e8e93 !important; }
+    html[data-theme="light"] footer .bg-gray-800 { background-color: #d8d8dc !important; }
+    html[data-theme="light"] footer .text-gray-200 { color: #3a3a3c !important; }
+    html[data-theme="light"] footer .border-gray-800 { border-color: rgba(0,0,0,0.1) !important; }
+
+    /* Detail view 文字 */
+    html[data-theme="light"] #detail-view { color: #1d1d1f; }
+    html[data-theme="light"] #detail-view .text-white { color: #1d1d1f !important; }
+    html[data-theme="light"] #detail-view .text-gray-300 { color: #3a3a3c !important; }
+    html[data-theme="light"] #detail-view .text-gray-400 { color: #6e6e73 !important; }
+    html[data-theme="light"] #detail-view .text-gray-500 { color: #8e8e93 !important; }
+    html[data-theme="light"] #detail-view .text-amber-300 { color: #b45309 !important; }
+    html[data-theme="light"] #detail-view .text-green-400 { color: #1a7f3c !important; }
+    html[data-theme="light"] #detail-view .text-red-400 { color: #c0392b !important; }
+    html[data-theme="light"] #detail-view .bg-green-900\/20 { background-color: #f0fdf4 !important; border-color: rgba(0,0,0,0.04) !important; }
+    html[data-theme="light"] #detail-view .bg-red-900\/20 { background-color: #fff5f5 !important; border-color: rgba(0,0,0,0.04) !important; }
+    html[data-theme="light"] #detail-view .bg-amber-900\/30 { background-color: #fffbeb !important; border-color: rgba(0,0,0,0.04) !important; }
+    html[data-theme="light"] #detail-view button.text-gray-400 { color: #6e6e73 !important; }
+    html[data-theme="light"] #detail-view .poster-placeholder { background: repeating-linear-gradient(45deg,#e8e8ed,#e8e8ed 10px,#f5f5f7 10px,#f5f5f7 20px); }
   </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-950 min-h-screen">
 
 <!-- ===== HEADER ===== -->
-<header class="bg-white border-b border-gray-100 sticky top-0 z-20 shadow-sm">
+<header class="bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-20">
   <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
     <button onclick="showList()" class="flex items-center gap-2 hover:opacity-70 transition-opacity">
       <span class="text-2xl">📈</span>
-      <span class="font-bold text-gray-900 text-lg">开户指南</span>
+      <span class="font-bold text-white text-lg">开户指南</span>
     </button>
-    <div class="inline-flex items-center gap-1.5 bg-yellow-400 text-yellow-900 text-xs font-semibold px-3 py-1 rounded-full badge-pulse">
-      🎁 2026年4月活动进行中
+    <div class="flex items-center gap-3">
+      <button onclick="toggleTheme()" id="theme-toggle"
+        class="w-9 h-9 rounded-full border border-white/20 hover:bg-white/10 flex items-center justify-center transition-colors text-lg"
+        title="切换主题">
+        <span id="theme-icon">☀️</span>
+      </button>
+      <div class="inline-flex items-center gap-1.5 bg-yellow-400 text-yellow-900 text-xs font-semibold px-3 py-1 rounded-full badge-pulse">
+        🎁 2026年4月活动进行中
+      </div>
     </div>
   </div>
 </header>
 
 <!-- ===== 重要通知 ===== -->
-<div class="bg-amber-50 border-b border-amber-200">
-  <div class="max-w-6xl mx-auto px-4 py-3 text-center text-sm text-amber-800 font-medium">
+<div class="notify-bar bg-gray-900 border-b border-gray-700">
+  <div class="max-w-6xl mx-auto px-4 py-2.5 text-center text-sm text-gray-300 font-medium">
     ⚠️ 重要通知：长桥、富途、老虎、华盛通正在清理未入金账户！已开户未入金请尽快入金激活（入金 1 万 HKD，存放几天即可）
   </div>
 </div>
@@ -47,14 +123,14 @@
 <div id="list-view">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-slate-700 to-slate-900 text-white py-12 px-4">
+  <section class="bg-gradient-to-b from-gray-950 to-gray-900 text-white py-16 px-4">
     <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-3">A港美股开户 · 香港银行卡办理</h1>
-      <p class="text-slate-300 text-base mb-6">内地身份 / 海外身份均可开 · 附最新奖励活动</p>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">A港美股开户 · 香港银行卡办理</h1>
+      <p class="text-gray-400 text-base md:text-lg mb-8">内地身份 / 海外身份均可开 · 附最新奖励活动</p>
       <div class="flex flex-wrap justify-center gap-3 text-sm">
-        <a href="#mainland" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">内地身份券商</a>
-        <a href="#overseas" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">海外身份券商</a>
-        <a href="#bank" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">香港银行卡</a>
+        <a href="#mainland" class="border border-white/25 hover:border-white/60 hover:bg-white/10 text-white/80 hover:text-white px-5 py-2 rounded-full transition-all">内地身份券商</a>
+        <a href="#overseas" class="border border-white/25 hover:border-white/60 hover:bg-white/10 text-white/80 hover:text-white px-5 py-2 rounded-full transition-all">海外身份券商</a>
+        <a href="#bank" class="border border-white/25 hover:border-white/60 hover:bg-white/10 text-white/80 hover:text-white px-5 py-2 rounded-full transition-all">香港银行卡</a>
       </div>
     </div>
   </section>
@@ -63,11 +139,11 @@
 
     <!-- 内地身份 -->
     <section id="mainland">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="bg-red-100 text-red-600 text-sm font-bold px-3 py-1 rounded-full">🪪 内地身份可开</span>
-        <span class="text-gray-400 text-sm">使用大陆居民身份证即可开户</span>
+      <div class="border-l-4 border-red-500 pl-4 mb-6">
+        <h2 class="text-xl font-bold text-white">🪪 内地身份可开</h2>
+        <p class="text-sm text-gray-500 mt-0.5">使用大陆居民身份证即可开户</p>
       </div>
-      <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-sm text-amber-900 flex items-start gap-2">
+      <div class="bg-gray-900 border-l-4 border-amber-400 rounded-xl px-4 py-3 mb-5 text-sm text-gray-300 flex items-start gap-2">
         <span class="text-base leading-5">⭐</span>
         <span><strong>优先推荐：复星证券</strong> — 入金 1 万终生免佣，门槛低、奖励稳，内地身份首选</span>
       </div>
@@ -76,11 +152,11 @@
 
     <!-- 海外身份 -->
     <section id="overseas">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="bg-blue-100 text-blue-600 text-sm font-bold px-3 py-1 rounded-full">🌏 海外身份可开</span>
-        <span class="text-gray-400 text-sm">需香港 / 新加坡等境外证件</span>
+      <div class="border-l-4 border-blue-500 pl-4 mb-4">
+        <h2 class="text-xl font-bold text-white">🌏 海外身份可开</h2>
+        <p class="text-sm text-gray-500 mt-0.5">需香港 / 新加坡等境外证件</p>
       </div>
-      <div class="bg-yellow-50 border-l-4 border-orange-400 rounded-xl px-4 py-3 mb-5 text-sm text-orange-700 font-semibold flex items-start gap-2">
+      <div class="bg-gray-900 border-l-4 border-orange-400 rounded-xl px-4 py-3 mb-5 text-sm text-gray-300 font-semibold flex items-start gap-2">
         <span class="text-base leading-5">💡</span>
         <span>已在<strong>长桥证券</strong>开户的用户，仍然可以入金获得本月奖励</span>
       </div>
@@ -89,19 +165,20 @@
 
     <!-- 香港银行卡 -->
     <section id="bank">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="bg-slate-100 text-slate-600 text-sm font-bold px-3 py-1 rounded-full">🏦 香港银行卡</span>
+      <div class="border-l-4 border-slate-500 pl-4 mb-2">
+        <h2 class="text-xl font-bold text-white">🏦 香港银行卡</h2>
+        <p class="text-sm text-gray-500 mt-0.5">按办理方式分类，选择适合自己的开户途径</p>
       </div>
-      <p class="text-sm text-gray-400 mb-10 ml-1">按办理方式分类，选择适合自己的开户途径</p>
+      <div class="mb-10"></div>
 
       <!-- 内地见证 -->
       <div class="mb-12">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">🏢 内地见证办理</span>
-          <span class="text-gray-400 text-xs">在内地网点完成身份见证，无需亲赴香港</span>
+        <div class="border-l-4 border-blue-400 pl-4 mb-3">
+          <h3 class="text-base font-bold text-white">🏢 内地见证办理</h3>
+          <p class="text-sm text-gray-500 mt-0.5">在内地网点完成身份见证，无需亲赴香港</p>
+          <p class="text-xs text-gray-400 mt-1">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
         </div>
-        <p class="text-xs text-gray-400 mb-3 ml-1">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
-        <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-sm text-amber-900 flex items-start gap-2">
+        <div class="bg-gray-900 border-l-4 border-amber-400 rounded-xl px-4 py-3 mb-5 text-sm text-gray-300 flex items-start gap-2">
           <span class="text-base leading-5">⭐</span>
           <span><strong>优先推荐：渣打银行</strong> — 内地见证首选，开户顺畅，功能完整</span>
         </div>
@@ -110,22 +187,21 @@
 
       <!-- 线上办理 -->
       <div class="mb-12">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">💻 线上办理</span>
-          <span class="text-gray-400 text-xs">全程线上完成</span>
+        <div class="border-l-4 border-green-400 pl-4 mb-5">
+          <h3 class="text-base font-bold text-white">💻 线上办理</h3>
+          <p class="text-sm text-gray-500 mt-0.5">全程线上完成 · 详细教程请关注「华尔街财富通」公众号</p>
         </div>
-        <p class="text-xs text-gray-400 mb-5 ml-1">详细教程请关注「华尔街强哥」公众号</p>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-online"></div>
       </div>
 
       <!-- 赴港办卡 -->
       <div class="mb-4">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">✈️ 赴港办卡</span>
-          <span class="text-gray-400 text-xs">连接香港 WiFi，全程线上开户，无需线下</span>
+        <div class="border-l-4 border-purple-400 pl-4 mb-3">
+          <h3 class="text-base font-bold text-white">✈️ 赴港办卡</h3>
+          <p class="text-sm text-gray-500 mt-0.5">连接香港 WiFi，全程线上开户，无需线下</p>
+          <p class="text-xs text-gray-400 mt-1">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街财富通」公众号</p>
         </div>
-        <p class="text-xs text-gray-400 mb-3 ml-1">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街强哥」公众号</p>
-        <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-sm text-amber-900 flex items-start gap-2">
+        <div class="bg-gray-900 border-l-4 border-amber-400 rounded-xl px-4 py-3 mb-5 text-sm text-gray-300 flex items-start gap-2">
           <span class="text-base leading-5">⭐</span>
           <span><strong>优先推荐：众安银行、汇丰银行、中银香港</strong> — 赴港首开这三家，覆盖日常收付汇需求</span>
         </div>
@@ -136,26 +212,32 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-gray-100 py-12 px-4">
+  <footer class="bg-gray-950 py-12 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-center text-lg font-bold text-gray-900 mb-8">联系我 · 关注获取最新活动</h2>
+      <h2 class="text-center text-lg font-bold text-white mb-8">联系我 · 关注获取最新活动</h2>
       <div class="flex flex-col sm:flex-row justify-center gap-10 mb-8">
         <div class="flex flex-col items-center gap-3">
           <img src="images/qr-official.jpg" class="w-36 h-36 rounded-2xl object-cover" alt="公众号二维码">
           <div class="text-center">
-            <div class="font-semibold text-gray-900">公众号</div>
-            <div class="text-sm text-gray-500">华尔街强哥</div>
+            <div class="font-semibold text-white">公众号</div>
+            <div class="text-sm text-gray-400">华尔街财富通</div>
           </div>
         </div>
         <div class="flex flex-col items-center gap-3">
           <img src="images/qr-wechat.jpg" class="w-36 h-36 rounded-2xl object-cover" alt="微信二维码">
           <div class="text-center">
-            <div class="font-semibold text-gray-900">微信</div>
-            <div class="text-sm text-gray-500">huaerjieqiangge</div>
+            <div class="font-semibold text-white">微信</div>
+            <div class="bg-gray-800 rounded-xl px-3 py-2 flex items-center gap-2 mt-1">
+              <span id="footer-wechat-id" class="text-sm font-mono text-gray-200">huaerjieqiangge</span>
+              <button id="footer-wechat-copy-btn" onclick="copyFooterWechat()"
+                class="bg-green-500 hover:bg-green-600 text-white text-xs font-medium px-2 py-1 rounded-lg transition-colors">
+                复制
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-100 pt-6 text-center text-xs text-gray-400 space-y-1">
+      <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500 space-y-1">
         <p>本站仅作信息参考，不构成投资建议。活动详情以各券商及银行官网为准。</p>
         <p>本站包含推荐链接，通过链接开户博主可能获得奖励。</p>
       </div>
@@ -165,9 +247,9 @@
 </div><!-- /list-view -->
 
 <!-- ===== DETAIL VIEW ===== -->
-<div id="detail-view" class="max-w-2xl mx-auto px-4 py-8 page-enter">
+<div id="detail-view" class="max-w-2xl mx-auto px-4 py-8 page-enter text-white">
 
-  <button onclick="showList()" class="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-6 transition-colors text-sm">
+  <button onclick="showList()" class="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors text-sm">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
     返回列表
   </button>
@@ -176,14 +258,14 @@
   <div class="flex items-center gap-4 mb-6">
     <div id="d-icon" class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold flex-shrink-0"></div>
     <div>
-      <h2 id="d-name" class="text-2xl font-bold text-gray-900"></h2>
+      <h2 id="d-name" class="text-2xl font-bold text-white"></h2>
       <span id="d-tag" class="text-xs text-gray-400"></span>
     </div>
   </div>
 
   <!-- 状态提示（暂停类券商） -->
   <div id="d-status-section" style="display:none;" class="mb-6">
-    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-800">
+    <div class="bg-amber-900/30 border border-amber-700 rounded-2xl p-4 text-sm text-amber-300">
       <span class="font-bold">⚠️ 注意：</span><span id="d-status-note"></span>
     </div>
   </div>
@@ -203,9 +285,9 @@
   <!-- 邀请码（有邀请码时显示） -->
   <div id="d-code-section" class="mb-6">
     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">🎟 邀请码</h3>
-    <div class="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between">
-      <span id="d-code" class="font-mono font-bold text-xl text-gray-900 tracking-widest"></span>
-      <button id="copy-btn" onclick="copyCode()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors">
+    <div class="bg-gray-900 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-700">
+      <span id="d-code" class="font-mono font-bold text-xl text-white tracking-widest"></span>
+      <button id="copy-btn" onclick="copyCode()" class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors">
         复制
       </button>
     </div>
@@ -215,38 +297,38 @@
   <div id="d-bank-info" style="display:none;" class="mb-6 space-y-4">
     <div>
       <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">✅ 优点</h3>
-      <div id="d-pros" class="bg-green-50 rounded-2xl p-5 space-y-2 text-sm text-gray-700 leading-relaxed"></div>
+      <div id="d-pros" class="bg-green-900/20 border border-green-800/50 rounded-2xl p-5 space-y-2 text-sm text-gray-300 leading-relaxed"></div>
     </div>
     <div>
       <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">⚠️ 缺点</h3>
-      <div id="d-cons" class="bg-red-50 rounded-2xl p-5 space-y-2 text-sm text-gray-700 leading-relaxed"></div>
+      <div id="d-cons" class="bg-red-900/20 border border-red-800/50 rounded-2xl p-5 space-y-2 text-sm text-gray-300 leading-relaxed"></div>
     </div>
     <div>
       <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📋 开户条件</h3>
-      <div id="d-conditions" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+      <div id="d-conditions" class="bg-gray-900 border border-gray-700 rounded-2xl px-5 py-4 text-sm font-medium text-gray-300"></div>
     </div>
     <div>
       <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📍 见证地点</h3>
-      <div id="d-location" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+      <div id="d-location" class="bg-gray-900 border border-gray-700 rounded-2xl px-5 py-4 text-sm font-medium text-gray-300"></div>
     </div>
     <div>
       <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">⏱️ 开户周期</h3>
-      <div id="d-time" class="bg-gray-50 rounded-2xl px-5 py-4 text-sm font-medium text-gray-800"></div>
+      <div id="d-time" class="bg-gray-900 border border-gray-700 rounded-2xl px-5 py-4 text-sm font-medium text-gray-300"></div>
     </div>
   </div>
 
   <!-- 预约联系（内地见证银行专属） -->
   <div id="d-contact-section" style="display:none;" class="mb-6">
     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📞 办理方式</h3>
-    <div class="bg-blue-50 rounded-2xl p-5">
-      <div class="font-semibold text-gray-900 mb-1">联系「华尔街强哥」咨询预约</div>
-      <div class="text-sm text-gray-500 mb-4">添加微信发送消息，即可获取最新见证开户资料及预约指引</div>
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-5">
+      <div class="font-semibold text-white mb-1">联系「华尔街强哥」咨询预约</div>
+      <div class="text-sm text-gray-400 mb-4">添加微信发送消息，即可获取最新见证开户资料及预约指引</div>
       <div class="flex flex-col sm:flex-row items-center gap-4">
         <img src="images/qr-wechat.jpg" class="w-32 h-32 rounded-xl object-cover flex-shrink-0" alt="微信二维码">
         <div class="flex flex-col gap-3 w-full">
-          <div class="text-xs text-gray-400">微信号</div>
-          <div class="bg-white rounded-xl px-4 py-3 flex items-center justify-between border border-blue-100">
-            <span id="wechat-id" class="font-mono font-bold text-gray-900 tracking-wide">huaerjieqiangge</span>
+          <div class="text-xs text-gray-500">微信号</div>
+          <div class="bg-gray-800 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-700">
+            <span id="wechat-id" class="font-mono font-bold text-white tracking-wide">huaerjieqiangge</span>
             <button onclick="copyWechat()" id="wechat-copy-btn"
               class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
               复制
@@ -261,14 +343,14 @@
   <!-- 公众号教程（赴港银行专属） -->
   <div id="d-pubaccount-section" style="display:none;" class="mb-6">
     <!-- 银行简介 -->
-    <p id="d-bank-desc" class="text-sm text-gray-600 leading-relaxed mb-5"></p>
+    <p id="d-bank-desc" class="text-sm text-gray-400 leading-relaxed mb-5"></p>
     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📖 开户教程</h3>
-    <div class="bg-purple-50 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4">
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4">
       <img src="images/qr-official.jpg" class="w-28 h-28 rounded-xl object-cover flex-shrink-0" alt="公众号二维码">
       <div class="flex flex-col gap-3">
         <div>
-          <div class="font-semibold text-gray-900 mb-1">「华尔街强哥」公众号图文教程</div>
-          <div class="text-sm text-gray-500">点击下方按钮查看详细开户步骤，或扫描左侧二维码关注公众号</div>
+          <div class="font-semibold text-white mb-1">「华尔街财富通」公众号图文教程</div>
+          <div class="text-sm text-gray-400">点击下方按钮查看详细开户步骤，或扫描左侧二维码关注公众号</div>
         </div>
         <div id="d-article-links" class="flex flex-wrap gap-2"></div>
         <span id="d-article-placeholder" class="text-xs text-gray-400" style="display:none;">教程链接待更新，请关注公众号查看</span>
@@ -279,23 +361,23 @@
   <!-- 开户流程（券商 + 线上/赴港银行） -->
   <div id="d-tutorial-section" class="mb-6">
     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📋 开户流程</h3>
-    <div id="d-tutorial" class="bg-white rounded-2xl border border-gray-100 p-5 space-y-3 text-sm text-gray-700 leading-relaxed"></div>
+    <div id="d-tutorial" class="bg-gray-900 rounded-2xl border border-gray-800 p-5 space-y-3 text-sm text-gray-300 leading-relaxed"></div>
   </div>
 
   <!-- 获取开户证明（所有券商） -->
   <div id="d-cert-section" style="display:none;" class="mb-6">
     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">📋 获取开户证明</h3>
-    <div class="bg-orange-50 rounded-2xl p-5">
-      <div class="text-sm text-gray-600 mb-3">点击下方「立即开户」按钮，手机登录注册后，到上传证明那里，添加微信发送以下信息，即可获取<span class="font-semibold text-gray-900">开户证明</span></div>
-      <div class="bg-white border-2 border-orange-400 rounded-xl px-5 py-3 mb-4 text-center">
-        <span class="font-bold text-orange-600 text-base tracking-widest">发送：姓名—拼音—电话</span>
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-5">
+      <div class="text-sm text-gray-400 mb-3">点击下方「立即开户」按钮，手机登录注册后，到上传证明那里，添加微信发送以下信息，即可获取<span class="font-semibold text-white">开户证明</span></div>
+      <div class="bg-gray-800 border-2 border-orange-500 rounded-xl px-5 py-3 mb-4 text-center">
+        <span class="font-bold text-orange-400 text-base tracking-widest">发送：姓名—拼音—电话</span>
       </div>
       <div class="flex flex-col sm:flex-row items-center gap-4">
         <img src="images/qr-wechat.jpg" class="w-28 h-28 rounded-xl object-cover flex-shrink-0" alt="微信二维码">
         <div class="flex flex-col gap-3 w-full">
-          <div class="text-xs text-gray-400">微信号</div>
-          <div class="bg-white rounded-xl px-4 py-3 flex items-center justify-between border border-orange-100">
-            <span class="font-mono font-bold text-gray-900 tracking-wide">huaerjieqiangge</span>
+          <div class="text-xs text-gray-500">微信号</div>
+          <div class="bg-gray-800 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-700">
+            <span class="font-mono font-bold text-white tracking-wide">huaerjieqiangge</span>
             <button onclick="copyWechat()"
               class="bg-orange-500 hover:bg-orange-600 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
               复制
@@ -781,12 +863,12 @@ function renderCard(item, isBank = false) {
     : '';
   return `
     <div onclick="showDetail('${item.id}', ${isBank})"
-         class="relative bg-white rounded-2xl shadow-sm border border-gray-100 p-4 card-hover flex flex-col items-center text-center">
+         class="relative bg-gray-900 rounded-2xl border border-gray-800 p-4 card-hover flex flex-col items-center text-center">
       ${statusBadge}
       <div class="w-12 h-12 rounded-xl ${item.icon.startsWith('data:') ? 'overflow-hidden' : item.iconBg} flex items-center justify-center text-lg font-bold ${item.iconColor} mb-3 flex-shrink-0">
         ${item.icon.startsWith('data:') ? `<img src="${item.icon}" class="w-full h-full object-cover">` : item.icon}
       </div>
-      <div class="font-semibold text-gray-900 text-sm leading-tight mb-1">${item.name}</div>
+      <div class="font-semibold text-white text-sm leading-tight mb-1">${item.name}</div>
       <div class="text-xs text-gray-400 mb-3 leading-tight">${item.tag.split('·')[0].trim()}</div>
       <div class="mt-auto w-full text-center ${item.btnColor} text-white text-xs font-semibold py-2 rounded-xl transition-colors">
         查看详情
@@ -977,6 +1059,16 @@ function copyWechat() {
   });
 }
 
+function copyFooterWechat() {
+  const id = document.getElementById('footer-wechat-id').textContent;
+  navigator.clipboard.writeText(id).then(() => {
+    const btn = document.getElementById('footer-wechat-copy-btn');
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
 function copyCode() {
   if (!currentCode) return;
   navigator.clipboard.writeText(currentCode).then(() => {
@@ -990,8 +1082,22 @@ function copyCode() {
   });
 }
 
+function toggleTheme() {
+  const html = document.documentElement;
+  const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '🌙' : '☀️';
+}
+
 // 支持直接通过 hash 进入详情页
 window.addEventListener('load', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.textContent = saved === 'dark' ? '🌙' : '☀️';
+  }
   const hash = window.location.hash.replace('#', '');
   if (hash) {
     const broker = brokers.find(b => b.id === hash);
