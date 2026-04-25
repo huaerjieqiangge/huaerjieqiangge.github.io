@@ -20,6 +20,13 @@
     .page-exit  { animation: fadeOut 0.16s ease forwards; }
     @keyframes fadeIn  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeOut { from{opacity:1;transform:translateY(0)}     to{opacity:0;transform:translateY(6px)} }
+    @keyframes hintBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-7px)} }
+    @keyframes hintFadeIn { from{opacity:0;transform:translateX(-50%) translateY(6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+    #theme-hint { position:absolute; left:50%; top:calc(100% + 10px); transform:translateX(-50%); text-align:center; pointer-events:none; z-index:50; white-space:nowrap; animation:hintFadeIn 0.4s ease forwards, hintBounce 0.9s ease-in-out 0.4s infinite; }
+    #theme-hint .hint-finger { font-size:1.5rem; display:block; line-height:1; }
+    #theme-hint .hint-label { font-size:10px; color:rgba(255,255,255,0.65); background:rgba(0,0,0,0.35); backdrop-filter:blur(6px); border-radius:4px; padding:2px 6px; margin-top:3px; display:block; }
+    html[data-theme="light"] #theme-hint .hint-label { color:rgba(0,0,0,0.55); background:rgba(255,255,255,0.6); }
+    #theme-hint.hiding { animation:none; opacity:0; transition:opacity 0.4s ease; }
     #list-view section + section { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 4rem; }
     html[data-theme="light"] #list-view section + section { border-top: 1px solid rgba(0,0,0,0.07); }
     .copied { background-color: #22c55e !important; }
@@ -158,11 +165,17 @@
       <span class="font-bold text-white text-lg">开户指南</span>
     </button>
     <div class="flex items-center gap-3">
-      <button onclick="toggleTheme()" id="theme-toggle"
-        class="w-9 h-9 rounded-full border border-white/20 hover:bg-white/10 flex items-center justify-center transition-colors text-lg"
-        title="切换主题">
-        <span id="theme-icon">☀️</span>
-      </button>
+      <div style="position:relative;">
+        <button onclick="toggleTheme()" id="theme-toggle"
+          class="w-9 h-9 rounded-full border border-white/20 hover:bg-white/10 flex items-center justify-center transition-colors text-lg"
+          title="切换主题">
+          <span id="theme-icon">☀️</span>
+        </button>
+        <div id="theme-hint" style="display:none;">
+          <span class="hint-finger">👆</span>
+          <span class="hint-label">浅色 / 深色</span>
+        </div>
+      </div>
       <div class="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 text-xs font-semibold px-3 py-1 rounded-full badge-pulse">
         <span class="w-1.5 h-1.5 rounded-full bg-yellow-700 opacity-70 inline-block"></span>
         2026年4月活动进行中
@@ -1290,6 +1303,15 @@ function toggleTheme() {
   html.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
   document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '🌙' : '☀️';
+  dismissThemeHint();
+}
+
+function dismissThemeHint() {
+  const hint = document.getElementById('theme-hint');
+  if (!hint || hint.style.display === 'none') return;
+  hint.classList.add('hiding');
+  setTimeout(() => { hint.style.display = 'none'; }, 450);
+  localStorage.setItem('theme_hint_seen', '1');
 }
 
 // 支持直接通过 hash 进入详情页
@@ -1299,6 +1321,14 @@ window.addEventListener('load', () => {
     document.documentElement.setAttribute('data-theme', saved);
     const icon = document.getElementById('theme-icon');
     if (icon) icon.textContent = saved === 'dark' ? '🌙' : '☀️';
+  }
+  if (!localStorage.getItem('theme_hint_seen')) {
+    const hint = document.getElementById('theme-hint');
+    if (hint) {
+      setTimeout(() => {
+        hint.style.display = 'block';
+      }, 1200);
+    }
   }
   const hash = window.location.hash.replace('#', '');
   if (hash) {
