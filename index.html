@@ -609,6 +609,7 @@ const brokers = [
     link: 'https://www.bbae.com/',
     code: '',
     poster: '',
+    articleLink: 'https://jm5p1e842p.feishu.cn/wiki/KhbrwdmZAi9Z1lk9Hl0cMwRpnEb?from=from_copylink',
     tutorial: [
       '① 点击下方「立即开户」按钮，跳转官方开户界面',
       '② 完成手机号注册',
@@ -1257,7 +1258,8 @@ function showDetail(id, isBank) {
   const pubaccountSection = document.getElementById('d-pubaccount-section');
   const articleLinksEl = document.getElementById('d-article-links');
   const articlePlaceholder = document.getElementById('d-article-placeholder');
-  if (isBank && (item.category === 'hk' || item.category === 'online')) {
+  const hasArticle = item.articleLinks || item.articleLink;
+  if ((isBank && (item.category === 'hk' || item.category === 'online')) || (!isBank && hasArticle)) {
     pubaccountSection.style.display = 'block';
     const descEl = document.getElementById('d-bank-desc');
     descEl.textContent = item.desc || '';
@@ -1266,7 +1268,7 @@ function showDetail(id, isBank) {
     articleLinksEl.innerHTML = '';
     if (links.length > 0) {
       links.forEach((url, i) => {
-        const label = links.length === 1 ? '查看微信公众号开户教程 →' : `开户教程（${['一','二','三','四','五'][i] || i+1}）→`;
+        const label = links.length === 1 ? '查看开户教程 →' : `开户教程（${['一','二','三','四','五'][i] || i+1}）→`;
         const a = document.createElement('a');
         a.href = url;
         a.target = '_blank';
