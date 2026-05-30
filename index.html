@@ -40,6 +40,7 @@
     /* Header：轻薄透明感 */
     html[data-theme="light"] header { background-color: rgba(232,236,242,0.82) !important; border-bottom-color: rgba(0,0,0,0.10) !important; }
     html[data-theme="light"] header span.font-bold { color: #1d1d1f !important; }
+    html[data-theme="light"] header a.font-bold { color: #1d1d1f !important; }
     html[data-theme="light"] #theme-toggle { border-color: rgba(0,0,0,0.12) !important; }
     html[data-theme="light"] #theme-toggle:hover { background-color: rgba(0,0,0,0.05) !important; }
 
@@ -122,10 +123,10 @@
     html[data-theme="light"] #list-view .text-gray-400 { color: #6e6e73 !important; }
     html[data-theme="light"] #list-view .text-gray-500 { color: #8e8e93 !important; }
     /* 推荐 banner 浅色模式 */
-    html[data-theme="light"] #list-view .bg-amber-500\/8 { background-color: rgba(251,191,36,0.10) !important; border-color: rgba(217,119,6,0.20) !important; }
-    html[data-theme="light"] #list-view .bg-blue-500\/8 { background-color: rgba(59,130,246,0.08) !important; border-color: rgba(37,99,235,0.18) !important; }
-    html[data-theme="light"] #list-view .text-amber-300 { color: #b45309 !important; }
-    html[data-theme="light"] #list-view .text-amber-400 { color: #d97706 !important; }
+    html[data-theme="light"] #list-view .bg-amber-500\/8 { background-color: rgba(99,102,241,0.07) !important; border-color: rgba(99,102,241,0.22) !important; }
+    html[data-theme="light"] #list-view .bg-blue-500\/8 { background-color: rgba(59,130,246,0.07) !important; border-color: rgba(59,130,246,0.22) !important; }
+    html[data-theme="light"] #list-view .text-amber-300 { color: #4338ca !important; }
+    html[data-theme="light"] #list-view .text-amber-400 { color: #6366f1 !important; }
     html[data-theme="light"] #list-view .text-blue-300 { color: #1d4ed8 !important; }
     html[data-theme="light"] #list-view .text-blue-400 { color: #2563eb !important; }
     /* h3 细竖线浅色模式 */
@@ -162,10 +163,12 @@
 <!-- ===== HEADER ===== -->
 <header class="bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-20">
   <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <button onclick="showList()" class="flex items-center gap-2 hover:opacity-70 transition-opacity">
-      <span class="text-2xl">📈</span>
-      <span class="font-bold text-white text-lg">开户指南</span>
-    </button>
+    <div class="flex items-center gap-2.5">
+      <button onclick="showList()" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+        <img src="images/icon-guide.webp" class="w-8 h-8 rounded-full object-cover" alt="华尔街之米">
+      </button>
+      <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=270vfed4-d257-4f03-9ca8-c44d7ae49015" target="_blank" rel="noopener noreferrer" class="font-bold text-white text-lg tracking-tight hover:opacity-80 transition-opacity">华尔街之米</a>
+    </div>
     <div class="flex items-center gap-3">
       <div style="position:relative;">
         <button onclick="toggleTheme()" id="theme-toggle"
