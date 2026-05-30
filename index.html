@@ -1229,13 +1229,13 @@ function showDetail(id, isBank) {
   }
 
   // 切换视图
+  window._listScrollY = window.scrollY;
   document.getElementById('list-view').style.display = 'none';
   const detailEl = document.getElementById('detail-view');
   detailEl.style.display = 'block';
   detailEl.classList.remove('page-enter');
   void detailEl.offsetWidth;
   detailEl.classList.add('page-enter');
-  window._listScrollY = window.scrollY;
   window.location.hash = id;
   window.scrollTo(0, 0);
 }
@@ -1249,7 +1249,7 @@ function showList() {
     const listEl = document.getElementById('list-view');
     listEl.style.display = 'block';
     history.pushState('', document.title, window.location.pathname);
-    requestAnimationFrame(() => window.scrollTo(0, window._listScrollY || 0));
+    requestAnimationFrame(() => { requestAnimationFrame(() => { window.scrollTo(0, window._listScrollY || 0); }); });
   }, 160);
 }
 
