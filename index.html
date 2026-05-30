@@ -193,7 +193,7 @@
 <div class="notify-bar bg-amber-950/50 border-b border-amber-800/30">
   <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-center gap-2 text-sm">
     <span class="text-amber-400 flex-shrink-0 text-base leading-none">⚠</span>
-    <span class="text-amber-200/85 font-medium">重要通知：长桥、富途、老虎马上将要清退存量用户, 抓住机会开复星/腾达作为备选）</span>
+    <span class="text-amber-200/85 font-medium">重要通知：长桥、富途、老虎马上将要清退存量用户, 抓住机会开复星/腾达作为备选</span>
   </div>
 </div>
 
@@ -290,7 +290,9 @@
             <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
             <h3 class="text-base font-bold text-white tracking-tight">线上办理</h3>
           </div>
-          <p class="text-sm text-gray-400 pl-3.5">全程线上完成 · 详细教程请关注「华尔街财富通」公众号</p>
+          <p class="text-sm text-gray-400 pl-3.5 mb-0.5">全程线上完成，无需出境，适合大陆用户跨境入金</p>
+          <p class="text-xs text-gray-500 pl-3.5 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金，实现足不出户完成跨境资金链路</p>
+          <a href="https://jm5p1e842p.feishu.cn/docx/LLVldqkqRoRfG5x49Euc8XkXnzh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 pl-3.5 transition-colors font-medium">📖 查看完整入金指导教程 →</a>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-online"></div>
       </div>
@@ -959,15 +961,22 @@ const banks = [
     iconBg: 'bg-blue-50',
     iconColor: 'text-blue-600',
     btnColor: 'bg-blue-600 hover:bg-blue-700',
-    link: 'https://www.ifastgb.com/',
-    tutorial: [
-      '① 点击下方「立即开户」按钮，跳转官方开户界面',
-      '② 完成手机号注册',
-      '③ 添加微信获取"开户证明"',
-      '④ 按照开户指引完成开户申请',
-      '⑤ 提交开户申请，等待审核（1-3 个工作日）',
-      '⑥ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
-    ],
+    link: 'https://www.ifastgb.com/tellafriend/zhongqiangd3568',
+    desc: 'iFAST Global Bank 是一家总部位于英国的数字银行，受英国 FCA 监管，提供英镑、美元、欧元等多币种账户。开户全程线上完成，无需出境，支持向港美股券商入金，是跨境资金管理的实用工具。',
+    articleLink: 'https://jm5p1e842p.feishu.cn/docx/TyPTdElshokgWvxHgGOcDGd2nhg?from=from_copylink',
+  },
+  {
+    id: 'wise',
+    category: 'online',
+    name: 'Wise',
+    tag: '全球多币种账户 · 低手续费跨境转账',
+    icon: 'images/icon-wise.webp',
+    iconBg: 'bg-green-50',
+    iconColor: 'text-green-600',
+    btnColor: 'bg-green-500 hover:bg-green-600',
+    link: 'https://wise.com/invite/ihpc/zhongqiangd',
+    desc: 'Wise（原 TransferWise）是全球领先的跨境汇款和多币种账户平台，支持 50+ 种货币，汇率透明、手续费极低。开户后可获得多国银行账号（美元、英镑、欧元等），方便接收海外资金、给券商入金、以及日常跨境消费。',
+    articleLink: 'https://jm5p1e842p.feishu.cn/docx/BV6EdJRcKoQSpGxaxO0cMifXnTw?from=from_copylink',
   },
 
   // ---------- 赴港办卡 ----------
@@ -1276,7 +1285,7 @@ function showDetail(id, isBank) {
 
   // 开户流程：券商 + 线上银行显示，赴港银行和见证银行隐藏
   const tutorialSection = document.getElementById('d-tutorial-section');
-  if (isBank && (item.category === 'witness' || item.category === 'hk')) {
+  if ((isBank && (item.category === 'witness' || item.category === 'hk')) || !item.tutorial) {
     tutorialSection.style.display = 'none';
   } else {
     tutorialSection.style.display = 'block';
