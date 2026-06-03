@@ -91,6 +91,8 @@
     html[data-theme="light"] .hero-pill-bank:hover { background-color: rgba(16,185,129,0.14) !important; border-color: rgba(16,185,129,0.5) !important; }
     html[data-theme="light"] .hero-pill-vpn { color: #7c3aed !important; background-color: rgba(139,92,246,0.08) !important; border-color: rgba(139,92,246,0.3) !important; }
     html[data-theme="light"] .hero-pill-vpn:hover { background-color: rgba(139,92,246,0.14) !important; border-color: rgba(139,92,246,0.5) !important; }
+    html[data-theme="light"] .hero-pill-crypto { color: #d97706 !important; background-color: rgba(245,158,11,0.08) !important; border-color: rgba(245,158,11,0.3) !important; }
+    html[data-theme="light"] .hero-pill-crypto:hover { background-color: rgba(245,158,11,0.14) !important; border-color: rgba(245,158,11,0.5) !important; }
 
     /* 所有模块：蓝灰色调玻璃感 */
     html[data-theme="light"] #list-view .bg-gray-900,
@@ -214,6 +216,7 @@
           <a href="#overseas" class="hero-pill-overseas flex-shrink-0 bg-blue-500/15 border border-blue-500/35 text-blue-300 hover:bg-blue-500/25 hover:border-blue-400/60 px-5 py-2 rounded-full transition-all font-medium">🌏 境外身份开户</a>
           <a href="#bank" class="hero-pill-bank flex-shrink-0 bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400/60 px-5 py-2 rounded-full transition-all font-medium">🏦 香港银行卡</a>
           <a href="#vpn" class="hero-pill-vpn flex-shrink-0 bg-purple-500/15 border border-purple-500/35 text-purple-300 hover:bg-purple-500/25 hover:border-purple-400/60 px-5 py-2 rounded-full transition-all font-medium">🚀 VPN 推荐</a>
+          <a href="#crypto" class="hero-pill-crypto flex-shrink-0 bg-yellow-500/15 border border-yellow-500/35 text-yellow-300 hover:bg-yellow-500/25 hover:border-yellow-400/60 px-5 py-2 rounded-full transition-all font-medium" style="display:none">₿ 加密货币</a>
         </div>
       </div>
     </div>
@@ -332,6 +335,19 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-vpn"></div>
     </section>
 
+    <!-- 加密货币（隐藏） -->
+    <section id="crypto" style="display:none">
+      <div class="mb-8">
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="w-[3px] h-5 rounded-full bg-yellow-500/80"></div>
+          <span class="text-xs font-semibold text-yellow-400 uppercase tracking-[0.12em]">加密货币</span>
+        </div>
+        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">加密货币交易所</h2>
+        <p class="text-sm text-gray-500">全球主流加密货币交易所</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-crypto"></div>
+    </section>
+
   </div>
 
   <!-- Footer -->
@@ -378,6 +394,17 @@
           <div class="text-center">
             <div class="font-semibold text-white">Discord</div>
             <a href="https://discord.gg/fgKBzZmFHa" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">点击加入 →</a>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="images/icon-x.webp" class="w-36 h-36 rounded-2xl object-cover" alt="X (Twitter)" loading="lazy" style="filter: invert(1)">
+          <div class="text-center">
+            <div class="font-semibold text-white">X (Twitter)</div>
+            <div class="text-sm text-gray-400 mb-1">@huaerjieqiangge</div>
+            <div class="flex flex-col gap-1">
+              <a href="https://x.com/i/chat/group_join/g2062081846226395460/DfKsaGURbm" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">加入群聊 →</a>
+              <a href="https://x.com/huaerjieqiangge?s=21" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">关注主页 →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1165,6 +1192,56 @@ const vpns = [
   },
 ];
 
+// ============================================================
+// 加密货币交易所数据
+// ============================================================
+const cryptos = [
+  {
+    id: 'binance',
+    name: '币安 Binance',
+    tag: '全球最大 · 币种齐全',
+    icon: 'images/binance.webp',
+    iconBg: 'bg-amber-50',
+    iconColor: 'text-amber-600',
+    btnColor: 'bg-amber-500 hover:bg-amber-600',
+    link: 'https://www.bsmkweb.cc/referral/earn-together/refer2earn-usdc/claim?hl=zh-CN&ref=GRO_28502_RGLN7&utm_source=referral_entrance',
+    perks: ['全球最大交易所', '币种最齐全'],
+  },
+  {
+    id: 'okx',
+    name: '欧意 OKX',
+    tag: '体验好 · 合约强',
+    icon: 'images/okx.webp',
+    iconBg: 'bg-gray-50',
+    iconColor: 'text-gray-600',
+    btnColor: 'bg-gray-600 hover:bg-gray-700',
+    link: 'https://www.asdfghjklqw.com/join/87971647',
+    perks: ['用户体验好', '合约交易强'],
+  },
+  {
+    id: 'bybit',
+    name: 'Bybit',
+    tag: '合约之王 · 流畅体验',
+    icon: 'images/bybit.webp',
+    iconBg: 'bg-orange-50',
+    iconColor: 'text-orange-600',
+    btnColor: 'bg-orange-500 hover:bg-orange-600',
+    link: 'https://www.bybitglobal.com/invite?ref=ARRP8KL',
+    perks: ['合约交易流畅', '界面简洁'],
+  },
+  {
+    id: 'bitget',
+    name: 'Bitget',
+    tag: '跟单交易 · 新手友好',
+    icon: 'images/bitget.webp',
+    iconBg: 'bg-cyan-50',
+    iconColor: 'text-cyan-600',
+    btnColor: 'bg-cyan-600 hover:bg-cyan-700',
+    link: 'https://www.bitget.com/zh-CN/referral/register?clacCode=QD1UJYYK&from=%2Fzh-CN%2Fevents%2Freferral-all-program&source=events&utmSource=PremierInviter',
+    perks: ['一键跟单', '新手友好'],
+  },
+];
+
 document.getElementById('grid-mainland').innerHTML =
   brokers.filter(b => b.group === 'mainland').map(b => renderCard(b)).join('');
 document.getElementById('grid-overseas').innerHTML =
@@ -1177,6 +1254,8 @@ document.getElementById('grid-bank-hk').innerHTML =
   banks.filter(b => b.category === 'hk').map(b => renderCard(b, true)).join('');
 document.getElementById('grid-vpn').innerHTML =
   vpns.map(v => renderCard(v)).join('');
+document.getElementById('grid-crypto').innerHTML =
+  cryptos.map(c => renderCard(c)).join('');
 
 // 悬停时注入品牌色光晕阴影
 document.querySelectorAll('[data-glow]').forEach(card => {
@@ -1197,6 +1276,8 @@ let currentCode = '';
 function showDetail(id, isBank) {
   const vpnItem = vpns.find(v => v.id === id);
   if (vpnItem) { showVpnDetail(vpnItem); return; }
+  const cryptoItem = cryptos.find(c => c.id === id);
+  if (cryptoItem) { showCryptoDetail(cryptoItem); return; }
   const item = isBank ? banks.find(b => b.id === id) : brokers.find(b => b.id === id);
   if (!item) return;
 
@@ -1407,6 +1488,47 @@ function showVpnDetail(item) {
   window.scrollTo(0, 0);
 }
 
+function showCryptoDetail(item) {
+  const iconEl = document.getElementById('d-icon');
+  iconEl.innerHTML = `<img src="${item.icon}" class="w-full h-full object-cover rounded-2xl">`;
+  iconEl.className = 'w-14 h-14 rounded-2xl flex-shrink-0 overflow-hidden';
+  document.getElementById('d-name').textContent = item.name;
+  document.getElementById('d-tag').textContent = item.tag;
+
+  document.getElementById('d-status-section').style.display = 'none';
+  document.getElementById('d-cert-section').style.display = 'none';
+  document.getElementById('d-poster-section').style.display = 'none';
+  document.getElementById('d-code-section').style.display = 'none';
+  document.getElementById('d-bank-info').style.display = 'none';
+  document.getElementById('d-contact-section').style.display = 'none';
+  document.getElementById('d-pubaccount-section').style.display = 'none';
+
+  const perksSection = document.getElementById('d-perks-section');
+  const perksEl = document.getElementById('d-perks');
+  perksSection.style.display = 'block';
+  perksEl.innerHTML = item.perks.map(p =>
+    `<span class="inline-flex items-center gap-1.5 bg-green-100 text-green-800 text-sm font-semibold px-4 py-2 rounded-xl">✅ ${p}</span>`
+  ).join('');
+
+  document.getElementById('d-tutorial-section').style.display = 'none';
+
+  const linkEl = document.getElementById('d-link');
+  linkEl.href = item.link;
+  linkEl.className = `block text-center text-white font-bold py-4 rounded-2xl text-base transition-colors mb-4 ${item.btnColor}`;
+  linkEl.textContent = '立即注册 →';
+  linkEl.style.display = 'block';
+
+  window._listScrollY = window.scrollY;
+  document.getElementById('list-view').style.display = 'none';
+  const detailEl = document.getElementById('detail-view');
+  detailEl.style.display = 'block';
+  detailEl.classList.remove('page-enter');
+  void detailEl.offsetWidth;
+  detailEl.classList.add('page-enter');
+  window.location.hash = item.id;
+  window.scrollTo(0, 0);
+}
+
 function showList() {
   const detailEl = document.getElementById('detail-view');
   detailEl.classList.add('page-exit');
@@ -1506,9 +1628,11 @@ window.addEventListener('load', () => {
     const broker = brokers.find(b => b.id === hash);
     const bank = banks.find(b => b.id === hash);
     const vpn = vpns.find(v => v.id === hash);
+    const crypto = cryptos.find(c => c.id === hash);
     if (broker) showDetail(hash, false);
     else if (bank) showDetail(hash, true);
     else if (vpn) showVpnDetail(vpn);
+    else if (crypto) showCryptoDetail(crypto);
   }
 });
 
