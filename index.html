@@ -716,6 +716,7 @@ const brokers = [
     guideImage: 'images/bit-guide.webp',
     incomeImage: 'images/bit-income.webp',
     telegramGroup: 'https://t.me/+fHXkEKrtdvNjODc1',
+    discordGroup: 'https://discord.gg/pAkcvearK',
     targetUsers: [
       '老虎/富途/长桥等平台用户寻找备选方案',
       '持有稳定币的Crypto玩家，快速买真实美股',
@@ -1554,9 +1555,12 @@ function showDetail(id, isBank) {
 
   // 官方开户群
   const telegramSection = document.getElementById('d-telegram-section');
-  if (item.telegramGroup) {
+  if (item.telegramGroup || item.discordGroup) {
     telegramSection.style.display = 'block';
-    document.getElementById('d-telegram').innerHTML = `<a href="${item.telegramGroup}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors">加入官方 Telegram 开户群 →</a>`;
+    let groupHtml = '';
+    if (item.telegramGroup) groupHtml += `<a href="${item.telegramGroup}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors">加入官方 Telegram 开户群 →</a>`;
+    if (item.discordGroup) groupHtml += `<a href="${item.discordGroup}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors">加入官方 Discord 群 →</a>`;
+    document.getElementById('d-telegram').innerHTML = `<div class="flex flex-wrap gap-3">${groupHtml}</div>`;
   } else {
     telegramSection.style.display = 'none';
   }
