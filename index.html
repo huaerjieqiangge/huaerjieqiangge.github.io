@@ -339,7 +339,7 @@
         </div>
         <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：众安银行、汇丰银行、中银香港</strong> — 赴港首开这三家，覆盖日常收付汇需求</span>
+          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：众安银行、汇丰银行、中银香港</strong> — 赴港首开这三家，覆盖日常收付汇需求；有香港身份证推荐<strong class="text-amber-300">Mox Bank</strong></span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-hk"></div>
       </div>
@@ -683,6 +683,28 @@ const brokers = [
     ],
   },
   {
+    id: 'yingli-sg',
+    group: 'mainland',
+    name: '盈立证券（新加坡）',
+    tag: '新加坡持牌 · 可交易加密货币ETF · 尝试VPN开户',
+    icon: 'images/icon-yinglisg.webp',
+    iconBg: 'bg-sky-50',
+    iconColor: 'text-sky-600',
+    btnColor: 'bg-sky-600 hover:bg-sky-700',
+    link: 'https://m.usmartsg66.com/promo/overseas/bonus-dec.html?ICode=csrw&langType=1&Id=',
+    code: 'csrw',
+    poster: 'images/yinglisg-poster.webp',
+    tutorial: [
+      '① 点击下方「立即开户」按钮，跳转官方开户界面',
+      '② 完成手机号注册',
+      '③ 添加微信获取"开户证明"',
+      '④ 按照开户指引完成开户申请',
+      '⑤ 提交开户申请，等待审核（1-3 个工作日）',
+      '⑥ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
+      '⑦ 入金满 5 万 HKD，可获得额外丰厚奖励',
+    ],
+  },
+  {
     id: 'bit',
     group: 'mainland',
     name: 'BIT',
@@ -931,31 +953,9 @@ const brokers = [
     iconBg: 'bg-blue-50',
     iconColor: 'text-blue-600',
     btnColor: 'bg-blue-600 hover:bg-blue-700',
-    link: 'http://hk.usmartbroker.com/webapp/open-account/apply.html?ICode=U03759#/register',
-    code: 'U03759',
+    link: 'https://hk.usmartbroker.com/u/1-0200t0sn2I',
+    code: 'v8q39',
     poster: 'images/yinglihk-poster.webp',
-    tutorial: [
-      '① 点击下方「立即开户」按钮，跳转官方开户界面',
-      '② 完成手机号注册',
-      '③ 添加微信获取"开户证明"',
-      '④ 按照开户指引完成开户申请',
-      '⑤ 提交开户申请，等待审核（1-3 个工作日）',
-      '⑥ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
-      '⑦ 入金满 5 万 HKD，可获得额外丰厚奖励',
-    ],
-  },
-  {
-    id: 'yingli-sg',
-    group: 'hk-broker',
-    name: '盈立证券（新加坡）',
-    tag: '新加坡持牌 · 可交易加密货币ETF',
-    icon: 'images/icon-yinglisg.webp',
-    iconBg: 'bg-sky-50',
-    iconColor: 'text-sky-600',
-    btnColor: 'bg-sky-600 hover:bg-sky-700',
-    link: 'https://m.usmartsg.com/promo/overseas/sg-register.html?langType=1&HCode=n7z8vg&HBox=1#/marketing-register',
-    code: 'n7z8vg',
-    poster: 'images/yinglisg-poster.webp',
     tutorial: [
       '① 点击下方「立即开户」按钮，跳转官方开户界面',
       '② 完成手机号注册',
@@ -1142,6 +1142,7 @@ const banks = [
     iconBg: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
     btnColor: 'bg-emerald-600 hover:bg-emerald-700',
+    code: 'R88UL5',
     desc: '众安银行（ZA Bank）是香港首批虚拟银行之一，开户全程线上完成，连接香港 WiFi 后下载 App 即可申请，无需到店，开户速度快，适合作为港美股券商入金的工具账户。',
     articleLinks: [
       'https://mp.weixin.qq.com/s?__biz=Mzk3NTI3MjU1NA==&mid=2247483717&idx=1&sn=a91b2947f10accd1f4f8671c26afc70d&scene=21#wechat_redirect',
@@ -1184,6 +1185,22 @@ const banks = [
     btnColor: 'bg-blue-800 hover:bg-blue-900',
     desc: '建行亚洲（CCB Asia）是建设银行旗下香港子行，中资背景，内地客户开户便利。连接香港 WiFi 后可线上完成开户，账户支持港美股券商入金及跨境转账。',
     articleLink: 'https://mp.weixin.qq.com/s?__biz=Mzk3NTI3MjU1NA==&mid=2247483819&idx=1&sn=328a369618505743051f3998f80fb831&scene=21#wechat_redirect',
+  },
+  {
+    id: 'mox',
+    category: 'hk',
+    name: 'Mox Bank',
+    tag: '渣打旗下虚拟银行 · 可申请信用卡 · 仅香港身份证可开',
+    icon: 'images/icon-mox.webp',
+    iconBg: 'bg-purple-50',
+    iconColor: 'text-purple-600',
+    btnColor: 'bg-purple-600 hover:bg-purple-700',
+    link: 'https://mox.com/zh/invite/?code=H258RZ',
+    code: 'H258RZ',
+    desc: 'Mox Bank 是渣打银行旗下的香港虚拟银行，需持有香港身份证才能开户。提供高达3.5%实际年利率存款、信用卡消费高达2%无上限CashBack或「亚洲萬里通」里数即时入戶，海外签账0外币交易手续费。使用推荐码 H258RZ 加入并成功申请Mox信用卡完成相关任务，可赚高达HKD2,000现金奖赏。',
+    articleLinks: [
+      'https://mp.weixin.qq.com/s?__biz=Mzk3NTI3MjU1NA==&mid=2247483717&idx=1&sn=a91b2947f10accd1f4f8671c26afc70d&scene=21#wechat_redirect',
+    ],
   },
 ];
 
@@ -1435,7 +1452,7 @@ function showDetail(id, isBank) {
 
   // 邀请码
   const codeSection = document.getElementById('d-code-section');
-  if (!isBank && item.code) {
+  if (item.code) {
     codeSection.style.display = 'block';
     document.getElementById('d-code').textContent = item.code;
     currentCode = item.code;
