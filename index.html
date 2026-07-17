@@ -44,10 +44,12 @@
     html[data-theme="light"] #theme-toggle { border-color: rgba(0,0,0,0.12) !important; }
     html[data-theme="light"] #theme-toggle:hover { background-color: rgba(0,0,0,0.05) !important; }
 
-    /* 通知栏 */
-    html[data-theme="light"] .notify-bar { background-color: rgba(254,243,199,0.7) !important; border-bottom-color: rgba(217,119,6,0.18) !important; }
-    html[data-theme="light"] .notify-bar span.text-amber-200\/85 { color: #92400e !important; }
-    html[data-theme="light"] .notify-bar span.text-amber-400 { color: #d97706 !important; }
+    /* 通知栏（浅色模式） */
+    html[data-theme="light"] #notify-scroll-wrap span.text-gray-300 { color: #374151 !important; }
+    html[data-theme="light"] #notify-scroll-wrap span.text-rose-400 { color: #dc2626 !important; }
+    html[data-theme="light"] #notify-scroll-wrap span.text-emerald-400 { color: #059669 !important; }
+    html[data-theme="light"] #notify-scroll-wrap span.text-amber-400 { color: #d97706 !important; }
+    html[data-theme="light"] .hero-notify-glow-inner .text-purple-300 { color: #6366f1 !important; }
 
     /* Hero aurora 背景 */
     .hero-glow {
@@ -158,6 +160,81 @@
     html[data-theme="light"] #detail-view .bg-amber-900\/30 { background-color: #fffbeb !important; border-color: rgba(0,0,0,0.04) !important; }
     html[data-theme="light"] #detail-view button.text-gray-400 { color: #6e6e73 !important; }
     html[data-theme="light"] #detail-view .poster-placeholder { background: repeating-linear-gradient(45deg,#e8e8ed,#e8e8ed 10px,#f5f5f7 10px,#f5f5f7 20px); }
+
+    /* 通知滚动区域 */
+    #notify-scroll-wrap { scroll-behavior: auto; }
+    #notify-scroll-wrap::-webkit-scrollbar { display: none; }
+    #notify-scroll-wrap { scrollbar-width: none; }
+
+
+    /* ===== Hero 右栏：动态光晕边框 ===== */
+    .hero-notify-glow {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .hero-notify-glow::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 17px;
+      background: conic-gradient(from var(--glow-angle, 0deg), rgba(139,92,246,0.6), rgba(59,130,246,0.6), rgba(6,182,212,0.4), rgba(139,92,246,0.1), rgba(139,92,246,0.6));
+      animation: glowRotate 4s linear infinite, glowRotateFallback 4s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @property --glow-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes glowRotate {
+      to { --glow-angle: 360deg; }
+    }
+    @keyframes glowRotateFallback {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(360deg); }
+    }
+    .hero-notify-glow-inner {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,27,75,0.88) 50%, rgba(15,23,42,0.92) 100%);
+      border-radius: 15px;
+      padding: 14px 16px;
+      height: 100%;
+    }
+    html[data-theme="light"] .hero-notify-glow-inner {
+      background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(238,242,255,0.9) 50%, rgba(255,255,255,0.85) 100%) !important;
+    }
+    html[data-theme="light"] .hero-notify-glow::before {
+      background: conic-gradient(from var(--glow-angle, 0deg), rgba(99,102,241,0.5), rgba(59,130,246,0.5), rgba(16,185,129,0.3), rgba(99,102,241,0.1), rgba(99,102,241,0.5));
+    }
+
+    /* 通知条目淡入动画 */
+    .notify-item {
+      opacity: 0;
+      transform: translateX(-8px);
+      animation: notifySlideIn 0.4s ease forwards;
+    }
+    .notify-item:nth-child(1) { animation-delay: 0.1s; }
+    .notify-item:nth-child(2) { animation-delay: 0.25s; }
+    .notify-item:nth-child(3) { animation-delay: 0.4s; }
+    .notify-item:nth-child(4) { animation-delay: 0.55s; }
+    @keyframes notifySlideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ===== Section 滚动出场动画 ===== */
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .section-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body class="bg-gray-950 min-h-screen">
@@ -191,32 +268,53 @@
   </div>
 </header>
 
-<!-- ===== 重要通知 ===== -->
-<div class="notify-bar bg-amber-950/50 border-b border-amber-800/30">
-  <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-center gap-2 text-sm">
-    <span class="text-amber-400 flex-shrink-0 text-base leading-none">⚠</span>
-    <span class="text-amber-200/85 font-medium">重要通知：长桥、富途、老虎、华盛通大陆已限制买入（需 VPN），2 年内将全面关户。请尽快开通复星/腾达/致富/BIT作为备选，开户后入金 1 万港币以上并留存数日即为有效户，可避免被清退</span>
-  </div>
-</div>
-
 <!-- ===== LIST VIEW ===== -->
 <div id="list-view">
 
   <!-- Hero -->
   <section class="hero-glow text-white pt-16 pb-14 px-4">
-    <div class="max-w-2xl mx-auto text-center" style="position:relative;z-index:1;">
-      <div class="hero-badge inline-flex items-center gap-2 text-xs font-semibold text-blue-400/80 bg-blue-500/8 border border-blue-400/20 px-3.5 py-1 rounded-full mb-6 tracking-widest uppercase">
-        2026 最新版 · 持续更新
+    <div class="max-w-4xl mx-auto" style="position:relative;z-index:1;">
+      <div class="text-center mb-8">
+        <div class="hero-badge inline-flex items-center gap-2 text-xs font-semibold text-blue-400/80 bg-blue-500/8 border border-blue-400/20 px-3.5 py-1 rounded-full mb-6 tracking-widest uppercase">
+          2026 最新版 · 持续更新
+        </div>
+        <h1 class="hero-title hero-title-grad text-3xl md:text-5xl font-bold mb-4">A港美股开户 · 港卡办理</h1>
+        <p class="text-gray-400 text-base md:text-lg leading-relaxed">内地 & 海外身份均可开 · 附最新奖励活动</p>
       </div>
-      <h1 class="hero-title hero-title-grad text-3xl md:text-5xl font-bold mb-4">A港美股开户 · 港卡办理</h1>
-      <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-8">内地 & 海外身份均可开 · 附最新奖励活动</p>
-      <div id="hero-pills-wrap" class="hero-pills overflow-x-auto -mx-4 px-4 mb-8">
-        <div class="inline-flex gap-3 text-sm">
-          <a href="#mainland" class="hero-pill-mainland flex-shrink-0 bg-red-500/15 border border-red-500/35 text-red-300 hover:bg-red-500/25 hover:border-red-400/60 px-5 py-2 rounded-full transition-all font-medium">🪪 内地身份开户</a>
-          <a href="#overseas" class="hero-pill-overseas flex-shrink-0 bg-blue-500/15 border border-blue-500/35 text-blue-300 hover:bg-blue-500/25 hover:border-blue-400/60 px-5 py-2 rounded-full transition-all font-medium">🌏 境外身份开户</a>
-          <a href="#bank" class="hero-pill-bank flex-shrink-0 bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400/60 px-5 py-2 rounded-full transition-all font-medium">🏦 香港银行卡</a>
-          <a href="#vpn" class="hero-pill-vpn flex-shrink-0 bg-purple-500/15 border border-purple-500/35 text-purple-300 hover:bg-purple-500/25 hover:border-purple-400/60 px-5 py-2 rounded-full transition-all font-medium">🚀 VPN 推荐</a>
-          <a href="#crypto" class="hero-pill-crypto flex-shrink-0 bg-yellow-500/15 border border-yellow-500/35 text-yellow-300 hover:bg-yellow-500/25 hover:border-yellow-400/60 px-5 py-2 rounded-full transition-all font-medium" style="display:none">₿ 加密货币</a>
+      <!-- 横向 pill 导航 -->
+      <div class="flex flex-wrap justify-center gap-3 text-sm mb-8">
+        <a href="#mainland" class="hero-pill-mainland bg-red-500/15 border border-red-500/35 text-red-300 hover:bg-red-500/25 hover:border-red-400/60 px-5 py-2 rounded-full transition-all font-medium">🪪 内地身份开户</a>
+        <a href="#overseas" class="hero-pill-overseas bg-blue-500/15 border border-blue-500/35 text-blue-300 hover:bg-blue-500/25 hover:border-blue-400/60 px-5 py-2 rounded-full transition-all font-medium">🌏 境外身份开户</a>
+        <a href="#bank" class="hero-pill-bank bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400/60 px-5 py-2 rounded-full transition-all font-medium">🏦 香港银行卡</a>
+        <a href="#vpn" class="hero-pill-vpn bg-purple-500/15 border border-purple-500/35 text-purple-300 hover:bg-purple-500/25 hover:border-purple-400/60 px-5 py-2 rounded-full transition-all font-medium">🚀 VPN 推荐</a>
+        <a href="#crypto" class="hero-pill-crypto bg-yellow-500/15 border border-yellow-500/35 text-yellow-300 hover:bg-yellow-500/25 hover:border-yellow-400/60 px-5 py-2 rounded-full transition-all font-medium" style="display:none">₿ 加密货币</a>
+      </div>
+      <!-- 通知面板居中 -->
+      <div class="max-w-lg mx-auto hero-notify-glow">
+        <div class="hero-notify-glow-inner">
+          <div class="text-xs font-semibold text-purple-300 mb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+            <span>📢</span> 最新通知
+          </div>
+          <div id="notify-scroll-wrap" class="overflow-hidden" style="height:76px;">
+            <div id="notify-scroll-inner" class="flex flex-col gap-2.5 text-sm">
+              <div class="notify-item flex items-start gap-2 flex-shrink-0">
+                <span class="text-rose-400 flex-shrink-0 text-xs leading-5">⚠</span>
+                <span class="text-gray-300 text-xs leading-5">长桥、富途、老虎、华盛通大陆已限制开仓（需 VPN），2 年内将全面关户</span>
+              </div>
+              <div class="notify-item flex items-start gap-2 flex-shrink-0">
+                <span class="text-emerald-400 flex-shrink-0 text-xs leading-5">🎉</span>
+                <span class="text-gray-300 text-xs leading-5">复星证券现已支持 VPN 开户，内地即可操作</span>
+              </div>
+              <div class="notify-item flex items-start gap-2 flex-shrink-0">
+                <span class="text-emerald-400 flex-shrink-0 text-xs leading-5">🎉</span>
+                <span class="text-gray-300 text-xs leading-5">腾达证券 7 月赴港办卡，补贴路费 50 HKD</span>
+              </div>
+              <div class="notify-item flex items-start gap-2 flex-shrink-0">
+                <span class="text-amber-400 flex-shrink-0 text-xs leading-5">🎁</span>
+                <span class="text-gray-300 text-xs leading-5">BIT 前 30 名新用户注册可获得 5 USD</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -306,7 +404,7 @@
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
           <span class="text-gray-300"><strong class="text-amber-300">优先推荐：渣打银行</strong> — 内地见证首选，开户顺畅，功能完整</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-witness"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-witness"></div>
       </div>
 
       <!-- 线上办理 -->
@@ -320,7 +418,7 @@
           <p class="text-xs text-gray-500 pl-3.5 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金，实现足不出户完成跨境资金链路</p>
           <a href="https://jm5p1e842p.feishu.cn/docx/LLVldqkqRoRfG5x49Euc8XkXnzh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 pl-3.5 transition-colors font-medium">📖 查看完整入金指导教程 →</a>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="grid-bank-online"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-online"></div>
       </div>
 
       <!-- 赴港办卡 -->
@@ -384,7 +482,7 @@
         </div>
         <h2 class="text-xl font-extrabold text-white tracking-tight">联系我们 · 获取最新资讯</h2>
       </div>
-      <div class="flex flex-wrap justify-center gap-10 mb-10">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center mb-10">
         <div class="flex flex-col items-center gap-3">
           <img src="images/qr-official.webp" class="w-36 h-36 rounded-2xl object-cover" alt="公众号二维码" loading="lazy">
           <div class="text-center">
@@ -1846,6 +1944,57 @@ window.addEventListener('load', () => {
 window.addEventListener('popstate', () => {
   if (!window.location.hash) showList();
 });
+
+// 通知滚动
+(function() {
+  const wrap = document.getElementById('notify-scroll-wrap');
+  const inner = document.getElementById('notify-scroll-inner');
+  if (!wrap || !inner) return;
+  const items = inner.children;
+  if (items.length <= 0) return;
+  // 如果内容没有超出容器，不需要滚动
+  if (inner.scrollHeight <= wrap.clientHeight) return;
+  // 克隆一份用于无缝滚动
+  const clone = inner.cloneNode(true);
+  clone.id = '';
+  wrap.appendChild(clone);
+  let offset = 0;
+  const speed = 0.15; // px per frame
+  function scroll() {
+    offset += speed;
+    if (offset >= inner.scrollHeight) offset = 0;
+    wrap.scrollTop = offset;
+    requestAnimationFrame(scroll);
+  }
+  // 鼠标悬停暂停
+  let paused = false;
+  wrap.addEventListener('mouseenter', () => { paused = true; });
+  wrap.addEventListener('mouseleave', () => { paused = false; });
+  function scrollLoop() {
+    if (!paused) {
+      offset += speed;
+      if (offset >= inner.scrollHeight) offset = 0;
+      wrap.scrollTop = offset;
+    }
+    requestAnimationFrame(scrollLoop);
+  }
+  requestAnimationFrame(scrollLoop);
+})();
+
+// Section 滚动出场动画
+(function() {
+  const sections = document.querySelectorAll('#list-view > div > section');
+  sections.forEach(s => s.classList.add('section-reveal'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  sections.forEach(s => observer.observe(s));
+})();
 </script>
 
 </body>
