@@ -6,7 +6,18 @@
   <title>港美股券商 & 香港银行卡</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+      background-image:
+        linear-gradient(180deg, #030712 0%, #0c1222 50%, #030712 100%),
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 60px 60px, 60px 60px;
+      background-attachment: fixed;
+    }
+    html[data-theme="light"] body {
+      background-image: none !important;
+    }
     .card-hover { transition: transform 0.24s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.24s ease, border-color 0.24s ease; cursor: pointer; border-radius: 28px; }
     .card-hover:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 24px 52px rgba(0,0,0,0.52), 0 0 0 1px rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); }
     .card-name { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -27,18 +38,35 @@
     #theme-hint .hint-label { font-size:10px; color:rgba(255,255,255,0.65); background:rgba(0,0,0,0.35); backdrop-filter:blur(6px); border-radius:4px; padding:2px 6px; margin-top:3px; display:block; }
     html[data-theme="light"] #theme-hint .hint-label { color:rgba(0,0,0,0.55); background:rgba(255,255,255,0.6); }
     #theme-hint.hiding { animation:none; opacity:0; transition:opacity 0.4s ease; }
-    #list-view section + section { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 4rem; }
-    html[data-theme="light"] #list-view section + section { border-top: 1px solid rgba(0,0,0,0.07); }
+    #list-view section + section {
+      border-top: none;
+      padding-top: 4rem;
+      margin-top: 1rem;
+      background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.06) 75%, transparent 100%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: top center;
+    }
+    html[data-theme="light"] #list-view section + section {
+      border-top: none;
+      background-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.06) 75%, transparent 100%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: top center;
+    }
     .copied { background-color: #22c55e !important; }
     .hero-pills { scrollbar-width: none; -ms-overflow-style: none; }
     .hero-pills::-webkit-scrollbar { display: none; }
     .hero-title { letter-spacing: -0.04em; }
 
-    /* ===== LIGHT MODE — Apple style ===== */
-    html[data-theme="light"] body { background-color: #f5f5f7 !important; background-image: none !important; }
+    /* ===== LIGHT MODE ===== */
+    html[data-theme="light"] body {
+      background: linear-gradient(180deg, #c8ddf0 0%, #dfe9f4 20%, #edf1f7 50%, #e4e9f2 80%, #d8dfe9 100%) !important;
+      min-height: 100vh;
+    }
 
-    /* Header：轻薄透明感 */
-    html[data-theme="light"] header { background-color: rgba(232,236,242,0.82) !important; border-bottom-color: rgba(0,0,0,0.10) !important; }
+    /* Header — 透明融入背景 */
+    html[data-theme="light"] header { background-color: transparent !important; border-bottom-color: transparent !important; }
     html[data-theme="light"] header span.font-bold { color: #1d1d1f !important; }
     html[data-theme="light"] header a.font-bold { color: #1d1d1f !important; }
     html[data-theme="light"] #theme-toggle { border-color: rgba(0,0,0,0.12) !important; }
@@ -51,34 +79,24 @@
     html[data-theme="light"] #notify-scroll-wrap span.text-amber-400 { color: #d97706 !important; }
     html[data-theme="light"] .hero-notify-glow-inner .text-purple-300 { color: #6366f1 !important; }
 
-    /* Hero aurora 背景 */
+    /* Hero aurora 背景 — 透明底+光斑，与 body 无缝 */
     .hero-glow {
       background:
         radial-gradient(ellipse 85% 60% at 50% -10%, rgba(59,130,246,0.22) 0%, transparent 65%),
         radial-gradient(ellipse 50% 40% at 10% 70%, rgba(139,92,246,0.10) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(6,182,212,0.09) 0%, transparent 55%),
-        #030712;
+        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(6,182,212,0.09) 0%, transparent 55%);
       position: relative;
       overflow: hidden;
     }
-    .hero-glow::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-    }
+    .hero-glow::after { display: none; }
     .hero-title-grad {
       background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    /* Hero 浅色模式 */
-    html[data-theme="light"] .hero-glow { background: linear-gradient(to bottom, #d6e8f8, #eaf3fb 55%, #f5f5f7) !important; }
+    /* Hero 浅色模式 — 透明让 body 渐变透出 */
+    html[data-theme="light"] .hero-glow { background: transparent !important; }
     html[data-theme="light"] .hero-glow::after { display: none; }
     html[data-theme="light"] .hero-title-grad { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #7c3aed 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
     html[data-theme="light"] .hero-glow p { color: #4a5568 !important; }
@@ -96,7 +114,7 @@
     html[data-theme="light"] .hero-pill-crypto { color: #d97706 !important; background-color: rgba(245,158,11,0.08) !important; border-color: rgba(245,158,11,0.3) !important; }
     html[data-theme="light"] .hero-pill-crypto:hover { background-color: rgba(245,158,11,0.14) !important; border-color: rgba(245,158,11,0.5) !important; }
 
-    /* 所有模块：蓝灰色调玻璃感 */
+    /* 卡片：浅色模式 */
     html[data-theme="light"] #list-view .bg-gray-900,
     html[data-theme="light"] #detail-view .bg-gray-900 {
       background: rgba(230,238,252,0.82) !important;
@@ -106,16 +124,25 @@
     html[data-theme="light"] #list-view .bg-gray-800,
     html[data-theme="light"] #detail-view .bg-gray-800 { background-color: rgba(228,235,245,0.5) !important; border-color: transparent !important; }
 
-    /* 卡片悬停：上浮 + 阴影加强 */
-    html[data-theme="light"] .card-hover:hover { box-shadow: 0 24px 48px rgba(0,0,0,0.18) !important; border-color: rgba(0,0,0,0.12) !important; }
+    /* 卡片：品牌色淡渐变 */
+    html[data-theme="light"] #list-view .card-hover.bg-gray-900 {
+      background: linear-gradient(160deg, var(--card-brand) 0%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0.3) 100%) !important;
+      border-color: rgba(255,255,255,0.5) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+    }
+    html[data-theme="light"] #list-view .card-hover.bg-gray-900:hover {
+      background: linear-gradient(160deg, var(--card-brand) 0%, var(--card-brand) 30%, rgba(255,255,255,0.25) 100%) !important;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5) !important;
+      border-color: rgba(255,255,255,0.6) !important;
+    }
 
-    /* 卡片「查看详情」按钮 */
+    /* 卡片样式 */
     html[data-theme="light"] .card-name { color: #1d1d1f !important; }
     html[data-theme="light"] .card-btn { filter: saturate(1.4) brightness(0.68); }
     html[data-theme="light"] .card-hover:hover .card-btn { filter: saturate(1.6) brightness(0.60); }
     html[data-theme="light"] .card-tag-chip { filter: saturate(1.2) brightness(0.72); }
 
-    /* 图标背景：加深饱和度让 bg-*-50 有质感 */
+    /* 图标背景 */
     html[data-theme="light"] #list-view .w-14.h-14.rounded-2xl:not(.overflow-hidden) { filter: saturate(2.2) brightness(0.82); }
     html[data-theme="light"] #detail-view #d-icon:not(.overflow-hidden) { filter: saturate(2.2) brightness(0.82); }
 
@@ -136,8 +163,8 @@
     /* h3 细竖线浅色模式 */
     html[data-theme="light"] #list-view .border-white\/20 { border-color: rgba(0,0,0,0.15) !important; }
 
-    /* Footer：与背景同色，顶部渐变自然衔接 */
-    html[data-theme="light"] footer { background: linear-gradient(to bottom, #f5f5f7 0%, #e8e8ed 22%) !important; border-top: none !important; }
+    /* Footer — 透明让 body 渐变透出 */
+    html[data-theme="light"] footer { background: transparent !important; border-top: none !important; }
     html[data-theme="light"] footer h2 { color: #1d1d1f !important; }
     html[data-theme="light"] footer .font-semibold { color: #1d1d1f !important; }
     html[data-theme="light"] footer .text-gray-400 { color: #6e6e73 !important; }
@@ -204,10 +231,15 @@
       height: 100%;
     }
     html[data-theme="light"] .hero-notify-glow-inner {
-      background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(238,242,255,0.9) 50%, rgba(255,255,255,0.85) 100%) !important;
+      background: transparent !important;
+      padding: 14px 16px;
     }
     html[data-theme="light"] .hero-notify-glow::before {
-      background: conic-gradient(from var(--glow-angle, 0deg), rgba(99,102,241,0.5), rgba(59,130,246,0.5), rgba(16,185,129,0.3), rgba(99,102,241,0.1), rgba(99,102,241,0.5));
+      display: none;
+    }
+    html[data-theme="light"] .hero-notify-glow {
+      background: transparent !important;
+      overflow: visible;
     }
 
     /* 通知条目淡入动画 */
@@ -223,6 +255,34 @@
     @keyframes notifySlideIn {
       to { opacity: 1; transform: translateX(0); }
     }
+
+    /* ===== Section 标题渐变 ===== */
+    .section-title-red {
+      background: linear-gradient(90deg, #fb923c 0%, #ffffff 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-title-blue {
+      background: linear-gradient(90deg, #93c5fd 0%, #ffffff 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-title-green {
+      background: linear-gradient(90deg, #6ee7b7 0%, #ffffff 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-title-purple {
+      background: linear-gradient(90deg, #c4b5fd 0%, #ffffff 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-title-yellow {
+      background: linear-gradient(90deg, #fde68a 0%, #ffffff 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    /* 浅色模式标题渐变 */
+    html[data-theme="light"] .section-title-red { background: linear-gradient(90deg, #ea580c 0%, #1d1d1f 70%); -webkit-background-clip: text; background-clip: text; }
+    html[data-theme="light"] .section-title-blue { background: linear-gradient(90deg, #2563eb 0%, #1d1d1f 70%); -webkit-background-clip: text; background-clip: text; }
+    html[data-theme="light"] .section-title-green { background: linear-gradient(90deg, #059669 0%, #1d1d1f 70%); -webkit-background-clip: text; background-clip: text; }
+    html[data-theme="light"] .section-title-purple { background: linear-gradient(90deg, #7c3aed 0%, #1d1d1f 70%); -webkit-background-clip: text; background-clip: text; }
+    html[data-theme="light"] .section-title-yellow { background: linear-gradient(90deg, #d97706 0%, #1d1d1f 70%); -webkit-background-clip: text; background-clip: text; }
 
     /* ===== Section 滚动出场动画 ===== */
     .section-reveal {
@@ -240,7 +300,7 @@
 <body class="bg-gray-950 min-h-screen">
 
 <!-- ===== HEADER ===== -->
-<header class="bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-20">
+<header class="bg-gray-950/60 backdrop-blur-xl border-b border-transparent sticky top-0 z-20">
   <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
     <div class="flex items-center gap-2.5">
       <button onclick="showList()" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
@@ -272,7 +332,7 @@
 <div id="list-view">
 
   <!-- Hero -->
-  <section class="hero-glow text-white pt-16 pb-14 px-4">
+  <section class="hero-glow text-white pt-16 pb-6 px-4">
     <div class="max-w-4xl mx-auto" style="position:relative;z-index:1;">
       <div class="text-center mb-8">
         <div class="hero-badge inline-flex items-center gap-2 text-xs font-semibold text-blue-400/80 bg-blue-500/8 border border-blue-400/20 px-3.5 py-1 rounded-full mb-6 tracking-widest uppercase">
@@ -320,153 +380,123 @@
     </div>
   </section>
 
-<div class="max-w-6xl mx-auto px-4 py-12 space-y-16">
+<div class="max-w-6xl mx-auto px-4 pt-6 pb-12 space-y-16">
 
     <!-- 内地身份 -->
     <section id="mainland">
       <div class="mb-8">
-        <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-[3px] h-5 rounded-full bg-red-500/80"></div>
-          <span class="text-xs font-semibold text-red-400 uppercase tracking-[0.12em]">内地证件</span>
-        </div>
-        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">内地身份开户</h2>
+        <span class="text-xs font-semibold text-orange-400 uppercase tracking-[0.12em]">🪪 内地证件</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-red">内地身份开户</h2>
         <p class="text-sm text-gray-500">使用大陆居民身份证即可开户</p>
       </div>
 
       <!-- 在内地可开 -->
       <div class="mb-12">
         <div class="mb-5">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
-            <h3 class="text-base font-bold text-white tracking-tight">在内地可开</h3>
-          </div>
-          <p class="text-sm text-gray-400 pl-3.5">无需出境，使用 VPN 即可完成开户</p>
+          <h3 class="text-base font-bold text-orange-400 tracking-tight mb-1">📍 在内地可开</h3>
+          <p class="text-sm text-gray-400">无需出境，使用 VPN 即可完成开户</p>
         </div>
         <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
           <span class="text-gray-300"><strong class="text-amber-300">优先推荐：复星证券</strong> — 入金一万终生免佣；有港卡的推荐「<strong class="text-amber-300">致富证券</strong>」，奖励丰厚；无港卡推荐「<strong class="text-amber-300">BIT</strong>」，稳定币入金，无需港卡</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-mainland"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-mainland"></div>
       </div>
 
       <!-- 赴港澳可开 -->
       <div class="mb-4" id="hk-broker">
         <div class="mb-5">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
-            <h3 class="text-base font-bold text-white tracking-tight">赴港澳可开</h3>
-          </div>
-          <p class="text-sm text-gray-400 pl-3.5">前往香港/澳门即可连接本地网络开户</p>
+          <h3 class="text-base font-bold text-orange-400 tracking-tight mb-1">✈️ 赴港澳可开</h3>
+          <p class="text-sm text-gray-400">前往香港/澳门即可连接本地网络开户</p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-hk-broker"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-hk-broker"></div>
       </div>
     </section>
 
     <!-- 海外身份 -->
     <section id="overseas">
       <div class="mb-8">
-        <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-[3px] h-5 rounded-full bg-blue-500/80"></div>
-          <span class="text-xs font-semibold text-blue-400 uppercase tracking-[0.12em]">境外证件</span>
-        </div>
-        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">境外身份开户</h2>
+        <span class="text-xs font-semibold text-blue-400 uppercase tracking-[0.12em]">🌏 境外证件</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-blue">境外身份开户</h2>
         <p class="text-sm text-gray-500">需香港 / 新加坡等境外证件</p>
       </div>
       <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-blue-500/8 border border-blue-400/20" style="border-left: 3px solid rgba(59,130,246,0.65);">
         <span class="text-blue-400 flex-shrink-0 mt-0.5">💡</span>
         <span class="text-gray-300">已在<strong class="text-blue-300">长桥证券</strong>开户的用户，仍然可以入金获得本月奖励</span>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-overseas"></div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-overseas"></div>
     </section>
 
     <!-- 香港银行卡 -->
     <section id="bank">
       <div class="mb-8">
-        <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-[3px] h-5 rounded-full bg-emerald-500/80"></div>
-          <span class="text-xs font-semibold text-emerald-400 uppercase tracking-[0.12em]">香港银行</span>
-        </div>
-        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">香港银行卡</h2>
+        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-[0.12em]">🏦 香港银行</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-green">香港银行卡</h2>
         <p class="text-sm text-gray-500">按办理方式分类，选择适合自己的开户途径</p>
       </div>
 
       <!-- 内地见证 -->
       <div class="mb-12">
         <div class="mb-5">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
-            <h3 class="text-base font-bold text-white tracking-tight">内地见证办理</h3>
-          </div>
-          <p class="text-sm text-gray-400 pl-3.5 mb-0.5">在内地网点完成身份见证，无需亲赴香港</p>
-          <p class="text-xs text-gray-500 pl-3.5">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
+          <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">🏛️ 内地见证办理</h3>
+          <p class="text-sm text-gray-400 mb-0.5">在内地网点完成身份见证，无需亲赴香港</p>
+          <p class="text-xs text-gray-500">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
         </div>
         <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
           <span class="text-gray-300"><strong class="text-amber-300">优先推荐：渣打银行</strong> — 内地见证首选，开户顺畅，功能完整</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-witness"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-witness"></div>
       </div>
 
       <!-- 线上办理 -->
       <div class="mb-12">
         <div class="mb-5">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
-            <h3 class="text-base font-bold text-white tracking-tight">线上办理</h3>
-          </div>
-          <p class="text-sm text-gray-400 pl-3.5 mb-0.5">全程线上完成，无需出境，适合大陆用户跨境入金</p>
-          <p class="text-xs text-gray-500 pl-3.5 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金，实现足不出户完成跨境资金链路</p>
-          <a href="https://jm5p1e842p.feishu.cn/docx/LLVldqkqRoRfG5x49Euc8XkXnzh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 pl-3.5 transition-colors font-medium">📖 查看完整入金指导教程 →</a>
+          <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">💻 线上办理</h3>
+          <p class="text-sm text-gray-400 mb-0.5">全程线上完成，无需出境，适合大陆用户跨境入金</p>
+          <p class="text-xs text-gray-500 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金，实现足不出户完成跨境资金链路</p>
+          <a href="https://jm5p1e842p.feishu.cn/docx/LLVldqkqRoRfG5x49Euc8XkXnzh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium">📖 查看完整入金指导教程 →</a>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-online"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-online"></div>
       </div>
 
       <!-- 赴港办卡 -->
       <div class="mb-4">
         <div class="mb-5">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="w-[2px] h-4 rounded-full bg-white/25"></div>
-            <h3 class="text-base font-bold text-white tracking-tight">赴港办卡</h3>
-          </div>
-          <p class="text-sm text-gray-400 pl-3.5 mb-0.5">连接香港 WiFi，全程线上开户，无需线下</p>
-          <p class="text-xs text-gray-500 pl-3.5">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街财富通」公众号</p>
+          <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">🇭🇰 赴港办卡</h3>
+          <p class="text-sm text-gray-400 mb-0.5">连接香港 WiFi，全程线上开户，无需线下</p>
+          <p class="text-xs text-gray-500">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街财富通」公众号</p>
         </div>
         <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
           <span class="text-gray-300"><strong class="text-amber-300">优先推荐：众安银行、汇丰银行、中银香港</strong> — 赴港首开这三家，覆盖日常收付汇需求；有香港身份证推荐<strong class="text-amber-300">Mox Bank</strong></span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-bank-hk"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-hk"></div>
       </div>
     </section>
 
     <!-- VPN 推荐 -->
     <section id="vpn">
       <div class="mb-8">
-        <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-[3px] h-5 rounded-full bg-purple-500/80"></div>
-          <span class="text-xs font-semibold text-purple-400 uppercase tracking-[0.12em]">科学上网</span>
-        </div>
-        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">VPN 推荐</h2>
+        <span class="text-xs font-semibold text-purple-400 uppercase tracking-[0.12em]">🚀 科学上网</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-purple">VPN 推荐</h2>
         <p class="text-sm text-gray-500">开户、交易必备工具</p>
       </div>
       <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
         <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
         <span class="text-gray-300"><strong class="text-amber-300">优先推荐：飞天猪</strong> — 速度快，节点多，稳定性强</span>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-vpn"></div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-vpn"></div>
     </section>
 
     <!-- 加密货币（隐藏） -->
     <section id="crypto" style="display:none">
       <div class="mb-8">
-        <div class="flex items-center gap-2.5 mb-3">
-          <div class="w-[3px] h-5 rounded-full bg-yellow-500/80"></div>
-          <span class="text-xs font-semibold text-yellow-400 uppercase tracking-[0.12em]">加密货币</span>
-        </div>
-        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">加密货币交易所</h2>
+        <span class="text-xs font-semibold text-yellow-400 uppercase tracking-[0.12em]">₿ 加密货币</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-yellow">加密货币交易所</h2>
         <p class="text-sm text-gray-500">全球主流加密货币交易所</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-crypto"></div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-crypto"></div>
     </section>
 
   </div>
@@ -1373,7 +1403,7 @@ function renderCard(item, isBank = false) {
     <div onclick="showDetail('${item.id}', ${isBank})"
          class="relative bg-gray-900 rounded-3xl border border-gray-800 p-4 pt-5 card-hover flex flex-col items-center text-center overflow-hidden"
          data-glow="${c[6]}"
-         style="background:linear-gradient(160deg,${c[8]} 0%,#111827 62%);border-color:${c[4]};">
+         style="--card-brand:${c[0]};--card-brand-strong:${c[6]};background:linear-gradient(160deg,${c[8]} 0%,#111827 62%);border-color:${c[4]};">
       <div class="absolute top-0 left-0 right-0 h-[4px] rounded-t-2xl" style="background:linear-gradient(90deg,${c[6]},${c[0]});box-shadow:0 2px 14px ${c[6]};"></div>
       ${statusBadge}
       <div class="w-14 h-14 rounded-2xl ${iconClass} flex items-center justify-center text-xl font-bold ${item.iconColor} mb-3 flex-shrink-0" style="background:${c[7]};box-shadow:0 0 20px ${c[7]};border:1px solid ${c[4]};">
