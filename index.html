@@ -246,7 +246,7 @@
         </div>
         <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
           <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：腾达证券</strong> — 入金一万终生免佣；有港卡的推荐「<strong class="text-amber-300">致富证券</strong>」，奖励丰厚；无港卡推荐「<strong class="text-amber-300">BIT</strong>」，稳定币入金，无需港卡</span>
+          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：复星证券</strong> — 入金一万终生免佣；有港卡的推荐「<strong class="text-amber-300">致富证券</strong>」，奖励丰厚；无港卡推荐「<strong class="text-amber-300">BIT</strong>」，稳定币入金，无需港卡</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-mainland"></div>
       </div>
@@ -259,10 +259,6 @@
             <h3 class="text-base font-bold text-white tracking-tight">赴港澳可开</h3>
           </div>
           <p class="text-sm text-gray-400 pl-3.5">前往香港/澳门即可连接本地网络开户</p>
-        </div>
-        <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
-          <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：复星证券</strong> — 入金一万终生免佣</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-hk-broker"></div>
       </div>
@@ -636,6 +632,29 @@
 const brokers = [
   // ---------- 内地身份 ----------
   {
+    id: 'fuxing',
+    group: 'mainland',
+    name: '复星证券',
+    tag: '香港持牌 · 终身免佣 · 需VPN · 推荐',
+    icon: 'images/icon-fuxing.webp',
+    iconBg: 'bg-orange-50',
+    iconColor: 'text-orange-600',
+    btnColor: 'bg-orange-500 hover:bg-orange-600',
+    link: 'https://h5.fotechwealth.com/pages/startAccount.html?channel=030002&aeCode=B2&invitationCode=2N2K5K&langType=zhCn',
+    code: '2N2K5K',
+    poster: 'images/fuxing-poster.webp',
+    perks: ['入金一万，终生免佣'],
+    tutorial: [
+      '⚠️ 开户需要 VPN 翻墙，节点选香港，全局模式',
+      '① 点击下方「立即开户」按钮，跳转官方开户界面',
+      '② 完成手机号注册',
+      '③ 添加微信获取"开户证明"',
+      '④ 按照开户指引完成开户申请',
+      '⑤ 提交开户申请，等待审核（1-3 个工作日）',
+      '⑥ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
+    ],
+  },
+  {
     id: 'gigamoney',
     group: 'mainland',
     name: 'Giga Money 腾达证券',
@@ -791,29 +810,6 @@ const brokers = [
     ],
   },
   // ---------- 赴港可开 ----------
-  {
-    id: 'fuxing-hk',
-    group: 'hk-broker',
-    name: '复星证券',
-    tag: '香港持牌 · 终身免佣 · 推荐',
-    icon: 'images/icon-fuxing.webp',
-    iconBg: 'bg-orange-50',
-    iconColor: 'text-orange-600',
-    btnColor: 'bg-orange-500 hover:bg-orange-600',
-    link: 'https://h5.fotechwealth.com/pages/startAccount.html?channel=030002&aeCode=B2&invitationCode=2N2K5K&langType=zhCn',
-    code: '2N2K5K',
-    poster: 'images/fuxing-poster.webp',
-    perks: ['入金一万，终生免佣'],
-    tutorial: [
-      '① 前往香港后，连接当地网络',
-      '② 点击下方「立即开户」按钮，跳转官方开户界面',
-      '③ 完成手机号注册',
-      '④ 添加微信获取"开户证明"',
-      '⑤ 按照开户指引完成开户申请',
-      '⑥ 提交开户申请，等待审核（1-3 个工作日）',
-      '⑦ 审核通过后入金，即可享受本月开户奖励（入金 1 万 HKD 起）',
-    ],
-  },
   // ---------- 海外身份 ----------
   {
     id: 'longbridge',
