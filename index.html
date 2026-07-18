@@ -61,7 +61,7 @@
 
     /* ===== LIGHT MODE ===== */
     html[data-theme="light"] body {
-      background: linear-gradient(180deg, #c8ddf0 0%, #dfe9f4 20%, #edf1f7 50%, #e4e9f2 80%, #d8dfe9 100%) !important;
+      background: linear-gradient(180deg, #dbe9f7 0%, #e8f1fa 20%, #f4f7fb 50%, #edf2f8 80%, #e4ecf4 100%) !important;
       min-height: 100vh;
     }
 
@@ -140,7 +140,7 @@
     html[data-theme="light"] .card-name { color: #1d1d1f !important; }
     html[data-theme="light"] .card-btn { filter: saturate(1.4) brightness(0.68); }
     html[data-theme="light"] .card-hover:hover .card-btn { filter: saturate(1.6) brightness(0.60); }
-    html[data-theme="light"] .card-tag-chip { filter: saturate(1.2) brightness(0.72); }
+    html[data-theme="light"] .card-tag-chip { filter: saturate(1.4) brightness(0.85); }
 
     /* 图标背景 */
     html[data-theme="light"] #list-view .w-14.h-14.rounded-2xl:not(.overflow-hidden) { filter: saturate(2.2) brightness(0.82); }
@@ -162,6 +162,12 @@
     html[data-theme="light"] #list-view .text-blue-400 { color: #2563eb !important; }
     /* h3 细竖线浅色模式 */
     html[data-theme="light"] #list-view .border-white\/20 { border-color: rgba(0,0,0,0.15) !important; }
+
+    /* 推荐胶囊浅色模式加深（限定在 flex-wrap 容器内） */
+    html[data-theme="light"] .flex-wrap > .text-emerald-300 { color: #047857 !important; }
+    html[data-theme="light"] .flex-wrap > .text-purple-300 { color: #6d28d9 !important; }
+    html[data-theme="light"] .flex-wrap > .text-amber-300 { color: #b45309 !important; }
+    html[data-theme="light"] .flex-wrap > .text-blue-300 { color: #1d4ed8 !important; }
 
     /* Footer — 透明让 body 渐变透出 */
     html[data-theme="light"] footer { background: transparent !important; border-top: none !important; }
@@ -396,9 +402,10 @@
           <h3 class="text-base font-bold text-orange-400 tracking-tight mb-1">📍 在内地可开</h3>
           <p class="text-sm text-gray-400">无需出境，使用 VPN 即可完成开户</p>
         </div>
-        <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
-          <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：复星证券</strong> — 入金一万终生免佣；有港卡的推荐「<strong class="text-amber-300">致富证券</strong>」，奖励丰厚；无港卡推荐「<strong class="text-amber-300">BIT</strong>」，稳定币入金，无需港卡</span>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300">★ 复星证券 · 入金一万终身免佣</span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">致富证券 · 有港卡推荐，奖励丰厚</span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300">BIT · 稳定币入金，无需港卡</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-mainland"></div>
       </div>
@@ -420,9 +427,8 @@
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-blue">境外身份开户</h2>
         <p class="text-sm text-gray-500">需香港 / 新加坡等境外证件</p>
       </div>
-      <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-blue-500/8 border border-blue-400/20" style="border-left: 3px solid rgba(59,130,246,0.65);">
-        <span class="text-blue-400 flex-shrink-0 mt-0.5">💡</span>
-        <span class="text-gray-300">已在<strong class="text-blue-300">长桥证券</strong>开户的用户，仍然可以入金获得本月奖励</span>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300">💡 已在长桥证券开户的用户，仍可入金获得本月奖励</span>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-overseas"></div>
     </section>
@@ -442,9 +448,8 @@
           <p class="text-sm text-gray-400 mb-0.5">在内地网点完成身份见证，无需亲赴香港</p>
           <p class="text-xs text-gray-500">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
         </div>
-        <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
-          <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：渣打银行</strong> — 内地见证首选，开户顺畅，功能完整</span>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300">★ 渣打银行 · 内地见证首选，开户顺畅，功能完整</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-witness"></div>
       </div>
@@ -467,9 +472,9 @@
           <p class="text-sm text-gray-400 mb-0.5">连接香港 WiFi，全程线上开户，无需线下</p>
           <p class="text-xs text-gray-500">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街财富通」公众号</p>
         </div>
-        <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
-          <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-          <span class="text-gray-300"><strong class="text-amber-300">优先推荐：众安银行、汇丰银行、中银香港</strong> — 赴港首开这三家，覆盖日常收付汇需求；有香港身份证推荐<strong class="text-amber-300">Mox Bank</strong></span>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300">★ 众安银行、汇丰银行、中银香港 · 赴港首开这三家</span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">Mox Bank · 有香港身份证推荐</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-hk"></div>
       </div>
@@ -482,9 +487,8 @@
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-purple">VPN 推荐</h2>
         <p class="text-sm text-gray-500">开户、交易必备工具</p>
       </div>
-      <div class="rounded-xl rounded-l-none px-4 py-3.5 mb-6 text-sm flex items-start gap-2.5 bg-amber-500/8 border border-amber-400/20" style="border-left: 3px solid rgba(245,158,11,0.65);">
-        <span class="text-amber-400 flex-shrink-0 mt-0.5">★</span>
-        <span class="text-gray-300"><strong class="text-amber-300">优先推荐：飞天猪</strong> — 速度快，节点多，稳定性强</span>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">★ 飞天猪 · 速度快，节点多，稳定性强</span>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-vpn"></div>
     </section>
@@ -812,9 +816,9 @@ const brokers = [
     name: '致富证券',
     tag: '香港持牌 · 老牌券商',
     icon: 'images/icon-zhifu.webp',
-    iconBg: 'bg-purple-50',
-    iconColor: 'text-purple-600',
-    btnColor: 'bg-purple-600 hover:bg-purple-700',
+    iconBg: 'bg-indigo-50',
+    iconColor: 'text-indigo-700',
+    btnColor: 'bg-indigo-700 hover:bg-indigo-800',
     link: 'https://ca.chiefgroup.com.hk/hk/open/start?PromoCode=MA7367',
     code: 'MA7367',
     poster: 'images/zhifu-poster.webp',
@@ -835,9 +839,9 @@ const brokers = [
     name: '盈立证券（新加坡）',
     tag: '新加坡持牌 · 可交易加密货币ETF · 尝试VPN开户',
     icon: 'images/icon-yinglisg.webp',
-    iconBg: 'bg-sky-50',
-    iconColor: 'text-sky-600',
-    btnColor: 'bg-sky-600 hover:bg-sky-700',
+    iconBg: 'bg-blue-50',
+    iconColor: 'text-blue-500',
+    btnColor: 'bg-blue-500 hover:bg-blue-600',
     link: 'https://m.usmartsg66.com/promo/overseas/bonus-dec.html?ICode=csrw&langType=1&Id=',
     code: 'csrw',
     poster: 'images/yinglisg-poster.webp',
@@ -899,9 +903,9 @@ const brokers = [
     name: 'BBAE（必贝证券）',
     tag: '美国持牌 · 免佣 · 免CRS',
     icon: 'images/icon-bbae.webp',
-    iconBg: 'bg-violet-50',
-    iconColor: 'text-violet-600',
-    btnColor: 'bg-violet-600 hover:bg-violet-700',
+    iconBg: 'bg-blue-50',
+    iconColor: 'text-blue-500',
+    btnColor: 'bg-blue-500 hover:bg-blue-600',
     link: 'https://www.bbae.com/',
     code: '',
     poster: '',
@@ -1263,9 +1267,9 @@ const banks = [
     name: 'iFAST Global Bank',
     tag: '英国数字银行 · 全程线上 · 可入金券商',
     icon: 'images/icon-ifast.webp',
-    iconBg: 'bg-blue-50',
-    iconColor: 'text-blue-600',
-    btnColor: 'bg-blue-600 hover:bg-blue-700',
+    iconBg: 'bg-teal-50',
+    iconColor: 'text-teal-600',
+    btnColor: 'bg-teal-600 hover:bg-teal-700',
     link: 'https://www.ifastgb.com/tellafriend/zhongqiangd3568',
     desc: 'iFAST Global Bank 是一家总部位于英国的数字银行，受英国 FCA 监管，提供英镑、美元、欧元等多币种账户。开户全程线上完成，无需出境，支持向港美股券商入金，是跨境资金管理的实用工具。',
     articleLink: 'https://jm5p1e842p.feishu.cn/docx/TyPTdElshokgWvxHgGOcDGd2nhg?from=from_copylink',
@@ -1320,9 +1324,9 @@ const banks = [
     name: '中银香港',
     tag: 'BOCHK · 中资背景 · 内地人开户方便',
     icon: 'images/icon-bochk.webp',
-    iconBg: 'bg-red-50',
-    iconColor: 'text-red-700',
-    btnColor: 'bg-red-700 hover:bg-red-800',
+    iconBg: 'bg-rose-50',
+    iconColor: 'text-rose-700',
+    btnColor: 'bg-rose-700 hover:bg-rose-800',
     desc: '中银香港（BOCHK）是中国银行旗下香港子行，对内地客户友好，开户审核相对宽松。连接香港 WiFi 后可通过官网或 App 线上开户，账户可用于港美股券商入金及日常换汇。',
     articleLink: 'https://mp.weixin.qq.com/s/hYpsNfYpZ2ZBZJGYbu_gfA',
   },
@@ -1344,9 +1348,9 @@ const banks = [
     name: 'Mox Bank',
     tag: '渣打旗下虚拟银行 · 可申请信用卡 · 仅香港身份证可开',
     icon: 'images/icon-mox.webp',
-    iconBg: 'bg-purple-50',
-    iconColor: 'text-purple-600',
-    btnColor: 'bg-purple-600 hover:bg-purple-700',
+    iconBg: 'bg-cyan-50',
+    iconColor: 'text-cyan-500',
+    btnColor: 'bg-cyan-500 hover:bg-cyan-600',
     link: 'https://mox.com/zh/invite/?code=H258RZ',
     code: 'H258RZ',
     desc: 'Mox Bank 是渣打银行旗下的香港虚拟银行，需持有香港身份证才能开户。提供高达3.5%实际年利率存款、信用卡消费高达2%无上限CashBack或「亚洲萬里通」里数即时入戶，海外签账0外币交易手续费。使用推荐码 H258RZ 加入并成功申请Mox信用卡完成相关任务，可赚高达HKD2,000现金奖赏。',
