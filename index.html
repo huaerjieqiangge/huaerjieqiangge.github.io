@@ -163,6 +163,19 @@
     /* h3 细竖线浅色模式 */
     html[data-theme="light"] #list-view .border-white\/20 { border-color: rgba(0,0,0,0.15) !important; }
 
+    /* 流程引导浅色模式 */
+    html[data-theme="light"] .flow-guide {
+      background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(59,130,246,0.05) 50%, rgba(16,185,129,0.05) 100%) !important;
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 16px;
+    }
+    html[data-theme="light"] .flow-guide p.text-white { color: #1e293b !important; }
+    html[data-theme="light"] .flow-step {
+      background: rgba(255,255,255,0.8) !important;
+      box-shadow: 0 2px 12px rgba(99,102,241,0.08) !important;
+      border-color: rgba(99,102,241,0.15) !important;
+    }
+
     /* 推荐胶囊浅色模式加深（限定在 flex-wrap 容器内） */
     html[data-theme="light"] .flex-wrap > .text-emerald-300 { color: #047857 !important; }
     html[data-theme="light"] .flex-wrap > .text-purple-300 { color: #6d28d9 !important; }
@@ -237,7 +250,9 @@
       height: 100%;
     }
     html[data-theme="light"] .hero-notify-glow-inner {
-      background: transparent !important;
+      background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(245,158,11,0.06) 100%) !important;
+      border: 1px solid rgba(249,115,22,0.2) !important;
+      border-radius: 15px;
       padding: 14px 16px;
     }
     html[data-theme="light"] .hero-notify-glow::before {
@@ -388,12 +403,25 @@
 
 <div class="max-w-6xl mx-auto px-4 pt-6 pb-12 space-y-16">
 
+    <!-- 流程引导 -->
+    <div class="max-w-3xl mx-auto rounded-2xl px-6 py-5 text-center flow-guide" style="background:rgba(255,255,255,0.03);">
+      <p class="text-base font-semibold text-white mb-4">想买卖港美股？只需三步 👇</p>
+      <div class="flex items-center justify-center gap-3 flex-wrap text-sm mb-3">
+        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-500/12 border border-blue-400/20 text-blue-300 font-semibold shadow-lg shadow-blue-500/5">① 开券商账户</span>
+        <span class="text-gray-500 text-lg">→</span>
+        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-500/12 border border-emerald-400/20 text-emerald-300 font-semibold shadow-lg shadow-emerald-500/5">② 办香港银行卡</span>
+        <span class="text-gray-500 text-lg">→</span>
+        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-500/12 border border-amber-400/20 text-amber-300 font-semibold shadow-lg shadow-amber-500/5">③ 入金交易</span>
+      </div>
+      <p class="text-xs text-gray-400 mt-3">券商和港卡可同步办理 · 不懂随时咨询「华尔街强哥」</p>
+    </div>
+
     <!-- 内地身份 -->
     <section id="mainland">
       <div class="mb-8">
         <span class="text-xs font-semibold text-orange-400 uppercase tracking-[0.12em]">🪪 内地证件</span>
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-red">内地身份开户</h2>
-        <p class="text-sm text-gray-500">使用大陆居民身份证即可开户</p>
+        <p class="text-sm text-gray-500">用大陆身份证开港美股证券账户，在家就能炒美股港股</p>
       </div>
 
       <!-- 在内地可开 -->
@@ -425,7 +453,7 @@
       <div class="mb-8">
         <span class="text-xs font-semibold text-blue-400 uppercase tracking-[0.12em]">🌏 境外证件</span>
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-blue">境外身份开户</h2>
-        <p class="text-sm text-gray-500">需香港 / 新加坡等境外证件</p>
+        <p class="text-sm text-gray-500">持有香港/新加坡等境外证件，开港美股证券账户</p>
       </div>
       <div class="flex flex-wrap gap-2 mb-6">
         <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300">💡 已在长桥证券开户的用户，仍可入金获得本月奖励</span>
@@ -438,7 +466,7 @@
       <div class="mb-8">
         <span class="text-xs font-semibold text-emerald-400 uppercase tracking-[0.12em]">🏦 香港银行</span>
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-green">香港银行卡</h2>
-        <p class="text-sm text-gray-500">按办理方式分类，选择适合自己的开户途径</p>
+        <p class="text-sm text-gray-500">办一张香港银行卡，方便给券商入金和跨境收付款</p>
       </div>
 
       <!-- 内地见证 -->
@@ -485,7 +513,7 @@
       <div class="mb-8">
         <span class="text-xs font-semibold text-purple-400 uppercase tracking-[0.12em]">🚀 科学上网</span>
         <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-purple">VPN 推荐</h2>
-        <p class="text-sm text-gray-500">开户、交易必备工具</p>
+        <p class="text-sm text-gray-500">开户和日常交易需要翻墙，选一个稳定的 VPN</p>
       </div>
       <div class="flex flex-wrap gap-2 mb-6">
         <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">★ 飞天猪 · 速度快，节点多，稳定性强</span>
