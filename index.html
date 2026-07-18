@@ -61,7 +61,7 @@
 
     /* ===== LIGHT MODE ===== */
     html[data-theme="light"] body {
-      background: linear-gradient(180deg, #dbe9f7 0%, #e8f1fa 20%, #f4f7fb 50%, #edf2f8 80%, #e4ecf4 100%) !important;
+      background: linear-gradient(180deg, #e4eefb 0%, #ecf3fd 20%, #f5f9fe 50%, #eff4fc 80%, #e9f0fa 100%) !important;
       min-height: 100vh;
     }
 
@@ -169,11 +169,9 @@
       border: 1px solid rgba(139,92,246,0.15);
       border-radius: 16px;
     }
-    html[data-theme="light"] .flow-guide p.text-white { color: #1e293b !important; }
     html[data-theme="light"] .flow-step {
-      background: rgba(255,255,255,0.8) !important;
-      box-shadow: 0 2px 12px rgba(99,102,241,0.08) !important;
-      border-color: rgba(99,102,241,0.15) !important;
+      color: #1e293b !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
     }
 
     /* 推荐胶囊浅色模式加深（限定在 flex-wrap 容器内） */
@@ -277,6 +275,52 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
+    /* ===== Section 卡片包裹 ===== */
+    .section-card {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+    }
+    .section-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.025);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 768px) { .section-card { padding: 2.5rem 2rem; } }
+    html[data-theme="light"] .section-card {
+      background: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+    html[data-theme="light"] #mainland.section-card:hover {
+      background: rgba(249,180,100,0.06) !important;
+      border-color: rgba(249,180,100,0.12) !important;
+      box-shadow: 0 16px 40px rgba(249,180,100,0.06) !important;
+    }
+    html[data-theme="light"] #overseas.section-card:hover {
+      background: rgba(100,150,240,0.06) !important;
+      border-color: rgba(100,150,240,0.12) !important;
+      box-shadow: 0 16px 40px rgba(100,150,240,0.06) !important;
+    }
+    html[data-theme="light"] #bank.section-card:hover {
+      background: rgba(60,200,150,0.06) !important;
+      border-color: rgba(60,200,150,0.12) !important;
+      box-shadow: 0 16px 40px rgba(60,200,150,0.06) !important;
+    }
+    html[data-theme="light"] #vpn.section-card:hover {
+      background: rgba(160,100,240,0.06) !important;
+      border-color: rgba(160,100,240,0.12) !important;
+      box-shadow: 0 16px 40px rgba(160,100,240,0.06) !important;
+    }
+    html[data-theme="light"] #crypto.section-card:hover {
+      background: rgba(240,200,60,0.06) !important;
+      border-color: rgba(240,200,60,0.12) !important;
+      box-shadow: 0 16px 40px rgba(240,200,60,0.06) !important;
+    }
+
     /* ===== Section 标题渐变 ===== */
     .section-title-red {
       background: linear-gradient(90deg, #fb923c 0%, #ffffff 70%);
@@ -363,7 +407,7 @@
         <p class="text-gray-400 text-base md:text-lg leading-relaxed">内地 & 海外身份均可开 · 附最新奖励活动</p>
       </div>
       <!-- 横向 pill 导航 -->
-      <div class="flex flex-wrap justify-center gap-3 text-sm mb-8">
+      <div class="flex flex-wrap justify-center gap-3 text-sm mb-6">
         <a href="#mainland" class="hero-pill-mainland bg-red-500/15 border border-red-500/35 text-red-300 hover:bg-red-500/25 hover:border-red-400/60 px-5 py-2 rounded-full transition-all font-medium">🪪 内地身份开户</a>
         <a href="#overseas" class="hero-pill-overseas bg-blue-500/15 border border-blue-500/35 text-blue-300 hover:bg-blue-500/25 hover:border-blue-400/60 px-5 py-2 rounded-full transition-all font-medium">🌏 境外身份开户</a>
         <a href="#bank" class="hero-pill-bank bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-400/60 px-5 py-2 rounded-full transition-all font-medium">🏦 香港银行卡</a>
@@ -398,39 +442,37 @@
           </div>
         </div>
       </div>
+      <!-- 流程引导 -->
+      <div class="max-w-lg mx-auto mt-6 text-center">
+        <p class="text-sm text-gray-400 mb-3">想买卖港美股？只需三步</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap text-sm">
+          <a href="#mainland" class="flow-step inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-white transition-all hover:scale-105" style="background:linear-gradient(135deg, rgba(59,130,246,0.5) 0%, rgba(99,102,241,0.35) 100%); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow: 0 4px 16px rgba(59,130,246,0.2), inset 0 1px 0 rgba(255,255,255,0.2);">① 开券商</a>
+          <span style="color:rgba(139,92,246,0.8); font-size:1.25rem;">➜</span>
+          <a href="#bank" class="flow-step inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-white transition-all hover:scale-105" style="background:linear-gradient(135deg, rgba(16,185,129,0.5) 0%, rgba(6,182,212,0.35) 100%); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow: 0 4px 16px rgba(16,185,129,0.2), inset 0 1px 0 rgba(255,255,255,0.2);">② 办港卡</a>
+          <span style="color:rgba(245,158,11,0.8); font-size:1.25rem;">➜</span>
+          <a href="#bank" class="flow-step inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-white transition-all hover:scale-105" style="background:linear-gradient(135deg, rgba(245,158,11,0.5) 0%, rgba(249,115,22,0.35) 100%); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); box-shadow: 0 4px 16px rgba(245,158,11,0.2), inset 0 1px 0 rgba(255,255,255,0.2);">③ 入金交易</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">券商和港卡可同步办理 · 不懂随时咨询「华尔街强哥」</p>
+      </div>
     </div>
   </section>
 
 <div class="max-w-6xl mx-auto px-4 pt-6 pb-12 space-y-16">
 
-    <!-- 流程引导 -->
-    <div class="max-w-3xl mx-auto rounded-2xl px-6 py-5 text-center flow-guide" style="background:rgba(255,255,255,0.03);">
-      <p class="text-base font-semibold text-white mb-4">想买卖港美股？只需三步 👇</p>
-      <div class="flex items-center justify-center gap-3 flex-wrap text-sm mb-3">
-        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-500/12 border border-blue-400/20 text-blue-300 font-semibold shadow-lg shadow-blue-500/5">① 开券商账户</span>
-        <span class="text-gray-500 text-lg">→</span>
-        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-500/12 border border-emerald-400/20 text-emerald-300 font-semibold shadow-lg shadow-emerald-500/5">② 办香港银行卡</span>
-        <span class="text-gray-500 text-lg">→</span>
-        <span class="flow-step inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-500/12 border border-amber-400/20 text-amber-300 font-semibold shadow-lg shadow-amber-500/5">③ 入金交易</span>
-      </div>
-      <p class="text-xs text-gray-400 mt-3">券商和港卡可同步办理 · 不懂随时咨询「华尔街强哥」</p>
-    </div>
-
     <!-- 内地身份 -->
-    <section id="mainland">
-      <div class="mb-8">
-        <span class="text-xs font-semibold text-orange-400 uppercase tracking-[0.12em]">🪪 内地证件</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-red">内地身份开户</h2>
+    <section id="mainland" class="section-card">
+      <div class="mb-6">
+        <h2 class="text-xl md:text-2xl font-extrabold tracking-tight section-title-red mb-1">🪪 内地身份开户</h2>
         <p class="text-sm text-gray-500">用大陆身份证开港美股证券账户，在家就能炒美股港股</p>
       </div>
 
       <!-- 在内地可开 -->
-      <div class="mb-12">
-        <div class="mb-5">
+      <div class="mb-10">
+        <div class="mb-4">
           <h3 class="text-base font-bold text-orange-400 tracking-tight mb-1">📍 在内地可开</h3>
           <p class="text-sm text-gray-400">无需出境，使用 VPN 即可完成开户</p>
         </div>
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-5">
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300">★ 复星证券 · 终身免佣</span>
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300">★ 腾达证券 · 终身免佣，长桥系统</span>
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-violet-500/15 border border-violet-400/30 text-violet-400">致富证券 · 老牌港资券商</span>
@@ -440,8 +482,8 @@
       </div>
 
       <!-- 赴港澳可开 -->
-      <div class="mb-4" id="hk-broker">
-        <div class="mb-5">
+      <div id="hk-broker">
+        <div class="mb-4">
           <h3 class="text-base font-bold text-orange-400 tracking-tight mb-1">✈️ 赴港澳可开</h3>
           <p class="text-sm text-gray-400">前往香港/澳门即可连接本地网络开户</p>
         </div>
@@ -450,58 +492,56 @@
     </section>
 
     <!-- 海外身份 -->
-    <section id="overseas">
-      <div class="mb-8">
-        <span class="text-xs font-semibold text-blue-400 uppercase tracking-[0.12em]">🌏 境外证件</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-blue">境外身份开户</h2>
+    <section id="overseas" class="section-card">
+      <div class="mb-4">
+        <h2 class="text-xl md:text-2xl font-extrabold tracking-tight section-title-blue mb-1">🌏 境外身份开户</h2>
         <p class="text-sm text-gray-500">持有香港/新加坡等境外证件，开港美股证券账户</p>
       </div>
-      <div class="flex flex-wrap gap-2 mb-6">
+      <div class="flex flex-wrap gap-2 mb-5">
         <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300">💡 需海外身份和海外地址开户</span>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-overseas"></div>
     </section>
 
     <!-- 香港银行卡 -->
-    <section id="bank">
-      <div class="mb-8">
-        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-[0.12em]">🏦 香港银行</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-green">香港银行卡</h2>
+    <section id="bank" class="section-card">
+      <div class="mb-6">
+        <h2 class="text-xl md:text-2xl font-extrabold tracking-tight section-title-green mb-1">🏦 香港银行卡</h2>
         <p class="text-sm text-gray-500">办一张香港银行卡，方便给券商入金和跨境收付款</p>
       </div>
 
       <!-- 内地见证 -->
-      <div class="mb-12">
-        <div class="mb-5">
+      <div class="mb-10">
+        <div class="mb-4">
           <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">🏛️ 内地见证办理</h3>
           <p class="text-sm text-gray-400 mb-0.5">在内地网点完成身份见证，无需亲赴香港</p>
-          <p class="text-xs text-gray-500">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑，自行预约可能被拒</p>
+          <p class="text-xs text-gray-500">联系「华尔街强哥」预约内部渠道，低门槛、流程丝滑</p>
         </div>
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-5">
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300">★ 渣打银行 · 内地见证首选，开户顺畅，功能完整</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-witness"></div>
       </div>
 
       <!-- 线上办理 -->
-      <div class="mb-12">
-        <div class="mb-5">
+      <div class="mb-10">
+        <div class="mb-4">
           <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">💻 线上办理</h3>
           <p class="text-sm text-gray-400 mb-0.5">全程线上完成，无需出境，适合大陆用户跨境入金</p>
-          <p class="text-xs text-gray-500 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金，实现足不出户完成跨境资金链路</p>
+          <p class="text-xs text-gray-500 mb-1.5">流程：大陆银行汇款 → iFAST 银行 → Wise 转账 → 券商入金</p>
           <a href="https://jm5p1e842p.feishu.cn/docx/LLVldqkqRoRfG5x49Euc8XkXnzh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium">📖 查看完整入金指导教程 →</a>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-bank-online"></div>
       </div>
 
       <!-- 赴港办卡 -->
-      <div class="mb-4">
-        <div class="mb-5">
+      <div>
+        <div class="mb-4">
           <h3 class="text-base font-bold text-emerald-300 tracking-tight mb-1">🇭🇰 赴港办卡</h3>
           <p class="text-sm text-gray-400 mb-0.5">连接香港 WiFi，全程线上开户，无需线下</p>
-          <p class="text-xs text-gray-500">前往香港后连接当地 WiFi，下载对应 App 即可在线完成开户 · 详细攻略请关注「华尔街财富通」公众号</p>
+          <p class="text-xs text-gray-500">前往香港后下载对应 App 即可完成 · 攻略关注「华尔街财富通」公众号</p>
         </div>
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-5">
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300">★ 众安银行、汇丰银行、中银香港 · 赴港首开这三家</span>
           <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">Mox Bank · 有香港身份证推荐</span>
         </div>
@@ -510,23 +550,21 @@
     </section>
 
     <!-- VPN 推荐 -->
-    <section id="vpn">
-      <div class="mb-8">
-        <span class="text-xs font-semibold text-purple-400 uppercase tracking-[0.12em]">🚀 科学上网</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-purple">VPN 推荐</h2>
+    <section id="vpn" class="section-card">
+      <div class="mb-4">
+        <h2 class="text-xl md:text-2xl font-extrabold tracking-tight section-title-purple mb-1">🚀 VPN 推荐</h2>
         <p class="text-sm text-gray-500">开户和日常交易需要翻墙，选一个稳定的 VPN</p>
       </div>
-      <div class="flex flex-wrap gap-2 mb-6">
+      <div class="flex flex-wrap gap-2 mb-5">
         <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300">★ 飞天猪 · 速度快，节点多，稳定性强</span>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-vpn"></div>
     </section>
 
     <!-- 加密货币（隐藏） -->
-    <section id="crypto" style="display:none">
-      <div class="mb-8">
-        <span class="text-xs font-semibold text-yellow-400 uppercase tracking-[0.12em]">₿ 加密货币</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1 mt-2 section-title-yellow">加密货币交易所</h2>
+    <section id="crypto" class="section-card" style="display:none">
+      <div class="mb-6 flex items-baseline gap-3 flex-wrap">
+        <h2 class="text-xl md:text-2xl font-extrabold tracking-tight section-title-yellow">₿ 加密货币交易所</h2>
         <p class="text-sm text-gray-500">全球主流加密货币交易所</p>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5" id="grid-crypto"></div>
